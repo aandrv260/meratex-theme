@@ -1,0 +1,138 @@
+{% form 'customer', novalidate: 'novalidate', class: 'newsletter__form' %}
+
+  <label for="email-input" class="newsletter__label">{{ section.settings.form_label }}</label>
+  <input id="email-input" name="contact[email]" 
+         value="" type="email" 
+         placeholder="Въведете своя имейл" 
+         class="newsletter__input {% if form.errors %} newsletter__input--invalid{% endif %}"
+         required
+         />
+  <button type="submit" class="newsletter__btn">{{ section.settings.btn_text }}</button>
+
+  {% if form.posted_successfully? %}
+          <p class="newsletter__success-message">
+            Успешно изпращане. Благодарим!
+          </p>
+
+  {% endif %}
+
+  {%- if form.errors contains 'email' -%}
+
+	<p class="newsletter__fail-message">Не можахме да изпратим заявката. {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</p>
+  {%- endif -%}
+
+{% endform %}
+
+{% style %}
+	
+.newsletter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6.4rem 0;
+	/* background-color: #fdf2e9; */
+	background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url("{{ section.settings.bg_image | img_url: '1200x' }}");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 50rem;
+}
+
+.newsletter__form {
+	background-color: rgba(255, 255, 255, .9);
+	border-radius: 8px;
+	padding: 3.2rem 4.8rem;
+	text-align: center;
+}
+
+.newsletter__label {
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin-bottom: 1.4rem;
+	letter-spacing: .7px;
+}
+
+.newsletter__input {
+	padding: 1rem 3.2rem;
+	border: 1px solid #ccc;
+	width: 100%;
+	margin: 0 auto 1.4rem;
+	text-align: center;
+	display: block;
+	font-size: 1.8rem;
+	border-radius: 4px;
+}
+
+.newsletter__input::placeholder {
+	font-weight: 300;
+	color: #aaa;
+	letter-spacing: .7px;
+}
+
+.newsletter__btn {
+	display: inline-block;
+	background-color: transparent;
+	border: none;
+	font-size: 1.7rem;
+	padding-bottom: 1px;
+	border-bottom: 1px solid transparent;
+}
+
+.newsletter__btn:hover {
+	border-bottom: 1px solid currentColor
+}
+
+.newsletter__success-message {
+	font-size: 1.8rem;
+	color: 	#228B22;
+	margin-top: 1.6rem;
+}
+
+.newsletter__fail-message {
+	color: 	#FF0000;
+	font-size: 1.8rem;
+	margin-top: 1.6rem;
+
+}
+
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Newsletter",
+	"tag": "section",
+	"class": "newsletter",
+    "settings": [
+		{
+			"type": "text",
+			"id": "form_label",
+			"label": "Headline"
+		},
+
+		{
+			"type": "text",
+			"id": "btn_text",
+			"label": "Button Text"
+		},
+
+		{
+			"type": "image_picker",
+			"id": "bg_image",
+			"label": "Background image"
+		}
+	],
+
+	"presets": [
+		{
+			"category": "Custom Sections",
+			"name": "Newsletter"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

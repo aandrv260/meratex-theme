@@ -1,0 +1,142 @@
+{% assign product_num = 4%}
+
+<div class="recommended">
+
+    <script>
+        console
+            .log("from reccs,", product)
+            const productsNum = {{ product_num }};
+            console.log('productsNum', productsNum)
+            fetch(`/recommendations/products.json?product_id=${
+                product.id
+            }&limit=${productsNum}`)
+            .then(res => res.json())
+            .then(data => {
+                const reccProducts = data.products;
+                const reccContainer = document.querySelector('.recommended');
+                
+                
+
+                console.log("reeccccs: ", reccProducts);
+                
+                reccProducts.forEach(prod => {
+                    console.log(prod)
+                    const incWords = ['за', 'на', 'от', 'в', 'във', 'по', 'върху', 'зад', 'с', 'със'];
+                    const prodTitleArr = prod.title.split(' ').slice(0, 4);
+                    const finalProductTitle = prodTitleArr.length !== prod.title.split(' ').length ? prodTitleArr.join(' ') + '...' : prodTitleArr.join(' ');
+
+                    const html = `<div class="recommended__product">
+                                        <img class="recommended__product-img" src="${prod.featured_image}"/>
+                                        <h3 class="heading__tertiary">${finalProductTitle}</h3>
+                                        <span class="recommended__product-price">${intlPrice(prod.price / 100)}</span>
+                                        <a href="${prod.url}" class="recommended__product-link">Разгледайте повече &rarr;</a>
+                                  </div>`;
+                    reccContainer.insertAdjacentHTML('afterbegin', html);
+                });
+            })
+    </script>
+</div>
+
+{% style %}
+.recommended {
+    display: grid;
+    grid-template-columns: repeat({{ product_num }}, 1fr);
+    justify-items: end;
+    justify-content: end;
+    align-items: start;
+    gap: 3rem;
+    padding: 2rem 1rem;
+    padding-left: 3.4rem;
+    padding-bottom: 8rem;
+    margin-top: 6.4rem;
+}
+
+.recommended h3 {
+    font-size: 2.4rem;
+    margin-bottom: 3px;
+}
+
+.recommended__product {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+
+.recommended__product-img {
+    width: 100%;
+    margin: 0 auto 2rem;
+}
+
+.recommended__product-price {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.recommended__product-link {
+    font-size: 1.8rem;
+    color: #e67e22;
+}
+
+@media only screen and (max-width: 81.25em) {
+    .recommended {
+        grid-template-columns: repeat(3, 1fr);
+        padding-right: 3.4rem;
+    }
+}
+
+@media only screen and (max-width: 46.87em) {
+    .recommended {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 4.8rem;
+    }
+}
+
+@media only screen and (max-width: 30.625em) {
+    .recommended {
+        grid-template-columns: 1fr;
+        gap: 8rem;
+    }
+
+    .recommended__product {
+        align-items: center;
+    }
+
+    .recommended__product-img {
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+}
+{% endstyle %}
+
+{% schema %}
+{
+        "name": "Recommended Products",
+        "tag": "section",
+        "settings": [
+        {
+            "type": "select",
+            "id": "products_num",
+            "label": "Number of products",
+            "options": [
+              {
+                "value": "1",
+                "label": "1"
+              },
+      
+              {
+                "value": "2",
+                "label": "2"
+              },
+      
+              {
+                "value": "3",
+                "label": "3"
+              }
+            ]
+          }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,208 @@
+<div class="u-center-text u-margin-bottom-big">
+  <h2 class="heading__secondary {% if collection.description != blank %} u-margin-bottom-sm {% else %} {% endif %}">{{ collection.title }}</h2>
+
+{% if collection.description != blank %}
+  <p class="collection-card__collection-description">{{ collection.description }}</p>
+{% endif %}
+</div>
+ <div class="collection-cards">
+   {% assign products = collection.products | sort: 'price' | reverse %}
+  {% for product in products %}
+  <div class="collection-cards__card">
+    <a href="{{ product.url }}" class="collection-cards__card-link">
+<!--   collection-cards   -->
+    <div class="collection-cards__img-box">
+      <img src="{{ product.featured_image | img_url: '300x300' }}" alt="alt" />
+    </div>
+    
+    <div class="collection-cards__content">
+      
+      <h3 class="collection-cards__heading">{{ product.title }}</h3>
+      <p class="collection-cards__desc">{{ product.description | strip_html | truncate: 100}}</p>
+	  {% comment  %}
+      <div class="collection-cards__cta-box" style="{% if product.compare_at_price %} flex-direction: column; gap: 3rem; padding: 0; {% endif %}">
+		{% if product.compare_at_price %}
+			<div class="collection-cards__prices" style="display: flex; gap: 3rem; align-items: center; justify-content: flex-start;">
+				<span class="collection-cards__compare-price">{{ product.compare_at_price | money }}</span>
+
+				<span class="collection-cards__price">{{ product.price | money }}</span>
+			</div>
+
+			{% else %}
+			<span class="collection-cards__price">{{ product.price | money }}</span>
+
+		{% endif %}
+			{% endcomment %}
+			<div class="collection-cards__cta-box">
+				{% if product.compare_at_price %}
+				<div class="collection-cards__prices">
+
+				<span class="collection-cards__compare-price">{{ product.compare_at_price | money }}</span>
+			<span class="collection-cards__price">{{ product.price | money }}</span>
+		</div> 
+				{% else %}
+			<span class="collection-cards__price">{{ product.price | money }}</span>
+			{% endif %}
+		
+		<a href={{ product.url }} class="collection-cards__cta-link">Пазарувай</a>
+      </div>
+    </div>
+    </a>
+  </div>
+  {% endfor %}
+</div> 
+
+<!-- <script>
+  const descs = document.querySelectorAll('.descs');
+  descs.forEach(desc => console.log(desc.textContent));
+  descs.forEach(desc => {
+  	desc.textContent = desc.textContent.slice(0, 20);
+  });
+</script> -->
+
+{% style %}
+	.collection-card__collection-description {
+		font-size: 1.8rem;
+	}
+	.collection-page {
+		padding: 4.8rem 0;
+	}
+	.collection-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: end;
+		justify-items: center;
+		justify-content: center;
+		row-gap: 8rem;
+		padding-bottom: 4.8rem 0;
+		
+	}
+.collection-cards__card-link {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
+	.collection-cards__img-box {
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+		margin-bottom: 2.7rem;
+	}
+
+	.collection-cards__img-box img {
+		margin-bottom: 1rem;
+		transition: all .4s;
+	}
+
+	.collection-cards__img-box:hover img {
+		transform: scale(1.3);
+	}
+
+	.collection-cards__content {
+	}
+
+	
+	.collection-cards__desc {
+		color: #555;
+		font-size: 1.6rem;
+		line-height: 1.8;
+		margin-bottom: 1rem;
+	}
+
+	.collection-cards__compare-price {
+		font-size: 1.8rem;
+		text-decoration: line-through;
+		margin-right: .5rem;
+	}
+
+	.collection-cards__price {
+      color: #e67e22;
+      font-size: 2rem;
+      text-align: left;
+      font-weight: 600;
+	}
+
+	.collection-cards__cta-box {
+		display: flex;
+		align-items: center;	
+		justify-content: space-between;
+		gap: 2rem;
+		padding: 0 4.8rem;
+	}
+
+	.collection-cards__cta-link:link,
+	.collection-cards__cta-link:visited {
+		padding: .5rem 2.4rem;
+   		background-color: #e67e22;
+		color: #fff;
+		border-radius: 5px;
+		text-align: center;
+		transition: all .2s;
+	}
+
+	.collection-cards__cta-link:hover,
+	.collection-cards__cta-link:active {
+		background-color: #a15818;
+	}
+
+    .collection-cards__heading {
+        font-size: 2rem;
+        color: #444;
+        margin-bottom: 1rem;
+    }
+
+    @media only screen and (max-width: 71.25em) {
+        .collection-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .collection-cards__img-box img {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media only screen and (max-width: 40.62em) {
+        .collection-cards {
+
+            grid-template-columns: 1fr
+        }
+    }
+
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Collection",
+	"class": "collection-page",
+    "settings": [
+		{
+      "type": "select",
+      "id": "product_num",
+      "label": "Number of products",
+      "options": [
+        		{
+          		"value": "10",
+          		"label": "10"
+        		},
+
+        		{
+          		"value": "15",
+          		"label": "15"
+        		},
+
+        		{
+          		"value": "20",
+          		"label": "20"
+        		},
+
+        		{
+          		"value": "25",
+          		"label": "25"
+        		}
+      		]
+    	}
+	]
+  }
+{% endschema %}

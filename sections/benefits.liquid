@@ -1,0 +1,132 @@
+{% assign blocks = section.blocks | size %}
+
+<div class="benefits">
+    {% for block in section.blocks %}
+        <div class="benefit">
+            <div class="benefit__img-box u-center-text">
+                <img class="benefit__img" src="{{ block.settings.benefit_img | img_url: '300x' }}"/>
+            </div>
+            <div class="u-center-text">
+                <h3 class="heading__tertiary u-margin-bottom-sm">{{ block.settings.benefit_heading }}</h3>
+                <p class="benefit__desc">{{ block.settings.benefit_desc }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% style %}
+
+.section--benefits {
+    padding: 8rem 2.4rem;
+    background-color: rgb(247, 247, 247);
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: 3.2rem;
+}
+
+.benefit {
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit__img-box {
+    overflow: hidden;
+    width: 70%;
+    margin: 0 auto 1.6rem;
+
+}
+
+.benefit__img {
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.benefit__img:hover {
+    transform: scale(1.1);
+}
+
+.benefit__desc {
+    font-size: 1.7rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1320px) {
+    .benefits {
+        gap: 1.6rem;
+    }
+
+    .section--benefits {
+        padding: 8rem 1rem;
+
+    }
+
+    .benefits h3 {
+        font-size: 2.6rem;
+
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .benefits {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 6.4rem;
+    }
+}
+
+@media only screen and (max-width: 46.87em) {
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+{% endstyle %}
+
+{% schema %}
+
+{
+    "name": "Benefits",
+    "tag": "section",
+    "class": "section--benefits",
+    "max_blocks": 3,
+    "settings": [
+        {
+            "type": "text",
+            "id": "headline",
+            "label": "Headline"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Benefit",
+            "type": "benefit",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "benefit_img",
+                    "label": "Image"
+                }, {
+                    "type": "text",
+                    "id": "benefit_heading",
+                    "label": "Benefit heading"
+                }, {
+                    "type": "textarea",
+                    "id": "benefit_desc",
+                    "label": "Benefit Description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Custom Section",
+            "name": "Benefits"
+        }
+    ]
+}
+
+{% endschema %}

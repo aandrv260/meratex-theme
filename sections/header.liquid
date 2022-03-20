@@ -1,0 +1,245 @@
+{% assign slider_text_1 = section.settings.slider_text_1 %}
+{% assign slider_link_1 = section.settings.slider_link_1 %}
+{% assign slider_text_2 = section.settings.slider_text_2 %}
+{% assign slider_link_2 = section.settings.slider_link_2 %}
+{% render 'promo-asset', slider_text_1: slider_text_1, slider_link_1: slider_link_1, slider_text_2: slider_text_2, slider_link_2: slider_link_2 %}
+<header class="header">
+    <button class="mob-nav-icon"><img src="https://img.icons8.com/ios/50/000000/menu--v1.png"/></button>
+
+    <!-- Logo -->
+    {% if section.settings.logo %}
+      <h1 class="heading-logo">
+        <a href="/"><img class="header__logo" src="{{ section.settings.logo  | img_url: '2048x' }}" alt="..." class="logo"></a>
+      </h1>
+    {% else %}
+      <h1 class="heading__primary"><a href="/"> {{ shop.name }}</a></h1>
+    {% endif %}
+
+    <!-- Main Menu -->
+    <nav class="header__nav">
+        <ul class="header__list">
+            {% for link in linklists[section.settings.main_menu].links %}
+            <li class="header__list-item">
+                <a class="header__link" href="{{ link.url }}">{{ link.title }} {% if link.levels > 0 %} <span style="margin-left: 1px;">	<span class="sub-menu-arr">	&#11167;</span> {% endif %}</a>
+
+                {% if link.levels > 0 %}
+                    <div class="header__sub-menu-cont">
+                        <ul class="header__sub-menu">
+                            {% for sub_link in link.links %}
+                                <li class="header__sub-menu-item">
+                                    <a href="{{ sub_link.url }}" class="header__sub-menu-link">
+                                       {{ sub_link.object.featured_image | img_url: '150x' | img_tag }}
+                                        <span >{{ sub_link.title }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{{ link.url }}" class="view-all-link">Всички {{ link.title }} <span class="sub-menu-arr">&#11166;</span></a>
+                    	
+                  </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <div class="header__user-icons">
+
+        <div class="header__icon-box">
+            <button class="header__cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#e67e22" viewBox="0 0 256 256">
+                    <rect width="256" height="256" fill="none"></rect>
+                    <path d="M184,184H69.8L41.9,30.6A8,8,0,0,0,34.1,24H16" fill="none" stroke="#e67"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+                    <circle cx="80" cy="204" r="20" fill="none" stroke="#e67e22" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="16"></circle>
+                    <circle cx="184" cy="204" r="20" fill="none" stroke="#e67e22" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="16"></circle>
+                    <path d="M62.5,144H188.1a15.9,15.9,0,0,0,15.7-13.1L216,64H48" fill="none" stroke="#e67e22"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+                </svg>
+<!--               <img class="header__cart-icon" src="https://img.icons8.com/ios/50/000000/shopping-cart.png"/> -->
+             </button>
+        </div>
+    </div>
+</header>
+
+{% style %}
+
+.mob-nav-icon {
+    display: none;
+}
+
+.section--header {
+    position: relative;
+    z-index: 20000;
+}
+
+.view-all-link {
+    align-self: center;
+    font-size: 1.9rem;
+    letter-spacing: 0.5px;
+}
+
+.sub-menu-arr {
+    color: rgba(230, 126, 34, 0.6)
+}
+
+.view-all-link:hover {
+    color: #e67e22;
+}
+
+.heading-logo a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 3.2rem;
+}
+
+.header__cart {
+    background: transparent;
+    border: none;
+}
+
+.header__cart-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: all 0.3s;
+}
+
+.header__list {}
+
+.header__list-item {
+    position: relative;
+
+}
+
+.header__link {
+    font-size: 1.7rem;
+}
+
+.header__link:hover {
+    color: #e67e22;
+}
+
+.header__sub-menu-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    padding: 2.4rem 3.2rem;
+    position: absolute;
+    top: 100%;
+    left: -200%;
+    background-color: #fff;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    width: 80rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.header__sub-menu {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+    align-items: end;
+}
+
+.header__list-item:hover .header__sub-menu-cont {
+    visibility: visible;
+    opacity: 1;
+}
+
+.header__sub-menu-item {}
+
+.header__sub-menu-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header__sub-menu-link:hover span {
+    color: #e67e22;
+}
+
+@media only screen and(max-width: 71.25em) {
+    .mob-nav-icon, {
+        display: flex !important;
+
+    }
+
+}
+
+@media only screen and(max-width: 30.625em) {
+    .header {
+        padding: 0.5rem 3.2rem;
+        gap: 4.8rem;
+    }
+
+    .heading-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .header__logo {
+        height: 70%;
+
+    }
+}
+
+{% endstyle %}
+
+{% schema %}
+
+{
+    "name": "Header",
+    "class": "section--header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        }, {
+            "type": "link_list",
+            "id": "main_menu",
+            "label": "Menu",
+            "default": "main-menu"
+        }, {
+            "type": "text",
+            "id": "slider_text_1",
+            "label": "Slider Text 1"
+        }, {
+            "type": "url",
+            "id": "slider_link_1",
+            "label": "Slider Link 1"
+        }, {
+            "type": "text",
+            "id": "slider_text_2",
+            "label": "Slider Text 2"
+        }, {
+            "type": "url",
+            "id": "slider_link_2",
+            "label": "Slider Link 2"
+        }
+    ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+
+
+{% endstylesheet %}
+<script>
+    const headerCartIcon = document.querySelector('.header__cart');
+
+    headerCartIcon.addEventListener('click', function(e) {
+     e.preventDefault();
+
+     document.querySelector('.modal-cart').classList.remove('hidden')
+  });   
+</script>

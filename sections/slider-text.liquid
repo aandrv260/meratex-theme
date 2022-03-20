@@ -1,0 +1,214 @@
+{% if section.settings.headline != blank %}
+  
+  <div class="u-center-text">
+  	<h2 class="heading__secondary">{{ section.settings.headline }}</h2>
+  </div>
+
+{% endif %}
+
+<div class="slider">
+  	{% for block in section.blocks %}
+        <div class="slide">
+          <div class="slide-feature">
+            <h5 class="slide-feature__header">{{ block.settings.slide_heading }}</h5>
+            <p class="slide-feature__text">
+              {{ block.settings.slide_text }}
+            </p>
+            
+          </div>
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Slider",
+	"tag": "section",
+	"class": "section--slide-benefits",
+    "settings": [
+		{
+			"type": "text",
+			"id": "headline",
+			"label": "Section Heading"
+		},
+
+		{
+			"type": "select",	
+			"id": "slide_timer",
+			"label": "Slideshow timer (in seconds)",
+			"options": [
+				{
+					"value": "3",
+					"label": "3"
+				},
+
+				{
+					"value": "5",
+					"label": "5"
+				},
+
+				{
+					"value": "10",
+					"label": "10"
+				},
+
+				{
+					"value": "15",
+					"label": "15"
+				}
+			]
+		}
+	],
+	
+	"blocks": [
+		{
+			"type": "slide",
+			"name": "Slide",
+			"settings": [
+				{
+					"type": "text",
+					"id": "slide_heading",
+					"label": "Slide Heading"
+				},
+
+				{
+					"type": "textarea",
+					"id": "slide_text",
+					"label": "Slider Text"
+				}
+			]
+		}
+	],
+
+	"presets": [
+		{
+			"category": "Custom Section",
+			"name": "Slider"
+		}
+	]
+  }
+{% endschema %}
+{% assign timer = section.settings.slide_timer %}
+<script>
+  {
+  	const slides = document.querySelectorAll('.slide');
+    const btnLeft = document.querySelectorAll('.slider__btn--left');
+    const btnRight = document.querySelectorAll('.slider__btn--right');
+    
+    slideshow(slides, btnLeft, btnRight, {{ timer }});
+
+  }
+</script>
+
+{% style %}
+
+.section--slide-benefits {
+	padding: 4.8rem 0;
+	background-color: #fef9f4;
+}
+
+.slider {
+  max-width: 100rem;
+  height: 50rem;
+  margin: 0 auto;
+  position: relative;
+	/* background-color: #fff; */
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* THIS creates the animation! */
+  transition: transform 1s;
+}
+
+.slide > img {
+  /* Only for images that have different size than slide */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  color: #333;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+}
+
+.slider__btn--left {
+  left: 6%;
+  transform: translate(-50%, -50%);
+}
+
+.slider__btn--right {
+  right: 6%;
+  transform: translate(50%, -50%);
+}
+
+.slide-feature {
+  width: 65%;
+  position: relative;
+}
+
+.slide-feature__header {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.slide-feature__text {
+  font-size: 1.7rem;
+  margin-bottom: 3.5rem;
+  color: #555;
+}
+
+.slide-feature__author {
+  margin-left: 3rem;
+  font-style: normal;
+
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  column-gap: 2rem;
+}
+
+.slide-feature__photo {
+  grid-row: 1 / span 2;
+  width: 6.5rem;
+  border-radius: 50%;
+}
+
+.slide-feature__name {
+  font-size: 1.7rem;
+  font-weight: 500;
+  align-self: end;
+  margin: 0;
+}
+
+@media only screen and (max-width: 46.87em) {
+  .slider__btn {
+    display: none;
+  }
+}
+{% endstyle %}

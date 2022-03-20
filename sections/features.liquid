@@ -1,0 +1,168 @@
+{% assign blocks = section.blocks | size %}
+
+<section class="section--features">
+  {% if section.settings.headline != blank %}
+  
+  {% render 'section-heading' with section.settings.headline as headline %}
+  
+  {% endif %}
+  <div class="features">
+    {% for block in section.blocks %}
+    	<div class="feature">
+          	{% case block.settings.icon %}
+          		{% when 'delivery' %}
+         			<img class="feature__icon" src="https://img.icons8.com/ios/50/000000/delivery--v1.png"/>
+
+          
+                {% when 'risk_free' %}
+<!--           			<img src="https://img.icons8.com/external-photo3ideastudio-lineal-photo3ideastudio/64/000000/external-sleep-home-activity-photo3ideastudio-lineal-photo3ideastudio.png"/> -->
+          		<img class="feature__icon" src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/000000/external-moon-halloween-bearicons-detailed-outline-bearicons.png"/>
+          		{% when 'reviews' %}
+          			<div class="feature__stars">
+						<img class="feature__icon--star" src="https://img.icons8.com/fluency/48/000000/star.png"/>
+						<img class="feature__icon--star" src="https://img.icons8.com/fluency/48/000000/star.png"/>
+						<img class="feature__icon--star" src="https://img.icons8.com/fluency/48/000000/star.png"/>
+						<img class="feature__icon--star" src="https://img.icons8.com/fluency/48/000000/star.png"/>
+						<img class="feature__icon--star" src="https://img.icons8.com/fluency/48/000000/star.png"/>
+         		 	</div>
+					
+
+          		{% when 'warranty' %}
+          			<img class="feature__icon" src="https://img.icons8.com/wired/64/000000/shield.png"/>
+          		{% when 'donation' %}
+          			<img class="feature__icon" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-donation-charity-kiranshastry-lineal-kiranshastry.png"/>
+				
+          {% endcase %}
+			<p class="feature__text">{{ block.settings.feature_text | escape }}</p>
+    	</div>
+    {% endfor %}
+  </div>
+</section>
+
+{% style %}
+
+	.section--features {
+		display: flex;
+		align-item: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 8rem 0;
+
+	}
+
+	.features {
+		display: grid;
+		grid-template-columns: repeat({{ blocks }}, 1fr);
+		align-items: center;
+		justify-content: space-between;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}	
+
+	.feature {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 1.6rem;
+	}
+
+	.feature__stars {
+		display: flex;
+		align-items: center;
+		margin-top: 1.2rem;
+		margin-bottom: 1.4rem;
+
+	}
+
+	.feature__icon {
+		height: 6rem;
+		width: 6rem;
+	}
+
+	.feature__icon--star {
+		height: 2.4rem;
+		width: 2.4rem;
+	}
+
+	.feature__text {
+		font-size: 1.8rem;
+		width: 70%;
+		text-align: center;
+		color: #555;
+	}
+
+	@media only screen and (max-width: 900px) {
+		.features {
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 4.8rem;
+		}
+	}
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Features",
+	"max_blocks": 4,
+    "settings": [
+		{
+     		"type": "text",
+      		"id": "headline",
+     		"label": "Heading"
+    	}
+	],
+
+	"blocks": [
+		{
+			"name": "Feature",
+			"type": "feature",
+			"settings": [
+				{
+      				"type": "select",
+      				"id": "icon",
+      				"label": "Feature Icon",
+      				"options": [
+        				{
+          					"value": "delivery",
+          					"label": "Delivery"
+        				},
+
+        				{
+          					"value": "risk_free",
+          					"label": "Risk Free"
+        				},
+
+        				{
+          					"value": "reviews",
+          					"label": "Reviews"
+        				},
+
+        				{
+          					"value": "warranty",
+          					"label": "Warranty"
+        				},
+
+						{
+          					"value": "donation",
+          					"label": "Donation"
+        				}	
+      				]
+    			},
+
+				{
+					"type": "text",
+					"id": "feature_text",
+					"label": "Reviews Text"
+				}
+			]
+		}
+	],
+
+	"presets": [
+    	{
+      		"category": "Custom Section",
+      		"name": "Features"
+    	}
+  	]
+  }
+{% endschema %}

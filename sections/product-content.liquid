@@ -1,0 +1,716 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+<div class="flex-container">
+    <div class="product-template">
+        <div class="product-template__img-container">
+            <div class="product-template__img-cont--main">
+                <img class="product-template__img--main" src="{{ featured_image | img_url: '1080x' }}" alt="{{ featured_image.alt | escape }}"/>
+            </div>
+
+            <div class="product-template__img-cont--small">
+                {% for image in product.images %}
+                    <img class="product-template__img--small" src="{{ image.src | img_url: '100x' }}" alt="{{ image.alt | escape }}">
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="product-template__details">
+            <span class="product-template__vendor">{{ product.vendor }}</span>
+            <h1 class="product-template__title">{{ product.title }}</h1>
+
+            <div class="product-template__description">    
+                {{ product.description }}
+            </div>
+            {% assign product_variants_size = product.variants | size %}
+
+            <form action="#" class="product-template__variants-form">
+                {% for option in product.options_with_values %}
+                    {% assign option_name = option.name | downcase %}
+                    {% if option_name != 'title' %}
+                        <span class="product-template__option-name">{{ option.name }}</span>
+                    {% endif %}
+                    <div class="product-template__variants product-template__variants--{{ option.name }} {% if product_variants_size == 1 and product.variants[0].title == 'Default Title' %}no-display {% endif %}">
+                        {% for value in option.values %}
+                            {% assign option_name = option.name | downcase %}
+                            <div class="product-template__variants-container">
+                                <input class="product-template__checkbox" id="checkbox--{{ value }}" name="{{ option.name }}" type="radio" value="{{ value }}" is-checked="false" style="display: none;">
+
+                                <label class="product-template__variant-box">
+                                    <span class="product-template__variant-title">{{value}}</span>
+                                    {% assign cur_option_size = product.options_by_name[option.name].values | size %}
+
+                                    {% for variant in product.variants %}
+                                        {% for var_option in variant.options %}
+                                            {% if var_option == value and cur_option_size > 1 %}
+                                                <div class="product-template__variant-prices">
+                                                    {% if variant.compare_at_price > variant.price %}
+                                                        <span class="product-template__variant-price product-template__variant-price--compare">{{ variant.compare_at_price | money}}</span>
+                                                    {% endif %}
+                                                    <span class="product-template__variant-price product-template__variant-price--main">{{ variant.price | money }}</span>
+                                                </div>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                {% endfor %}
+
+              
+                <div class="product-template__submit-container">
+                    <select class="product-template__qty-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button class="btn btn--full btn--add-to-cart">Добавяне в количката</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+    <script>
+        const product = {{ product | json }};
+        const variants = product.variants;
+        const unavailableVariants = variants.filter(variant => !variant.available);
+        const variantContainers = document.querySelectorAll(".product-template__variants");
+
+        console.log("unavailable vars, ", unavailableVariants);
+
+        console.log("prod", product, variants);
+
+        const variantOptions = variants.reduce((acc, cur) => {
+            acc.push([cur.options, cur.id]);
+            return acc;
+        }, []);
+
+        console.log(variantOptions)
+
+        // Select all checkboxes and filter the checked ones
+        const checkboxes = Array.from(document.querySelectorAll(".product-template__checkbox"));
+        console.log(checkboxes);
+
+        const btnAddToCart = document.querySelector(".btn--add-to-cart");
+        const variantBoxes = document.querySelectorAll(".product-template__variant-box");
+        const variantsForm = document.querySelector(".product-template__variants-form");
+
+        function handleVariantBoxClicks(checkbox, variantBoxes) {
+            variantBoxes.forEach(box => {
+                box.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const currentVariantCheckbox = this.closest(".product-template__variants-container").querySelector(".product-template__checkbox");
+                    console.log(currentVariantCheckbox);
+                    currentVariantCheckbox.checked = true;
+
+                    if (currentVariantCheckbox.checked) {
+                        console.log("CHECKED");
+                    }
+
+                });
+            })
+
+        }
+
+        handleVariantBoxClicks(checkboxes, variantBoxes);
+
+        async function handleAddToCarts() {
+            const varOptions = _.cloneDeep(variantOptions);
+            const checkedCheckboxes = checkboxes.filter(box => box.checked);
+            const values = checkedCheckboxes.map(box => box.value);
+            const qtySelector = variantsForm.querySelector(".product-template__qty-select");
+            const quantity = + qtySelector.value;
+            const emptyCartText = document?.querySelector('.empty-cart-message');
+            let id;
+
+            console.log(checkedCheckboxes, values);
+
+            // Get the variant ID
+
+            // Loop through all of the variants of the product and if they contain all of the values in the 'values' array, get the id
+
+            if (variants.length === 1) {
+                id = variants[0].id;
+            } else {
+
+                varOptions.forEach(optionArr => {
+                    console.log("optionArr", optionArr);
+
+                    const match = optionArr[0].every(option => values.includes(option));
+                    console.log(match);
+
+                    if (match) {
+                        optionArr.push(true);
+                    }
+                })
+
+                console.log(varOptions, variantOptions);
+
+                varOptions.forEach(option => {
+                    if (option[option.length - 1] === true) {
+                        id = option[1];
+                    }
+
+                });
+                console.log("id", id)
+            }
+
+            const curVariant = variants.find(variant => variant.id === id);
+            console.log(curVariant);
+
+            const data = {
+                "items": [
+                    {
+                        "id": id,
+                        "quantity": quantity
+                    }
+                ]
+            };
+
+        await fetch("/cart/add.js", {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log(res);
+
+                if (!res.ok && res.status === 422) {
+                    alert("Артикулът е извън наличност");
+
+                }
+
+                if (res.ok) 
+                    return res.json();
+                
+            }).then(data => {
+
+                const [added] = data.items;
+                console.log("ADDED PRODUCT: ", added);
+
+                const productsEl = document?.querySelector(".cart__products");
+                console.log('proodsad,>', productsEl);
+
+                console.log(added.handle)
+                console.log(`/products/${
+                    added.handle
+                }.js`);
+
+                fetch(`/products/${
+                    added.handle
+                }.js`)
+                    .then((res) => {
+                    console.log(res);
+                    return res.json();
+                })
+                    .then(prod => {
+                console.log('look heree', prod, added);
+
+                let cartHTML = `
+                    <div class="cart__product" key="[KEY]">
+                    <div class="cart__img-name-box">
+                        <div class="cart__img-box">
+                            <img class="cart__img" src="[SRC]"/>
+                        </div>
+
+                        <div class="cart__name-box">
+                            <span class="cart__prod-title">[TITLE]</span>
+
+                            <span class="cart__prod-option-name">[OPTION NAME]</span>
+                        </div>
+
+                    </div>
+
+                    <div class="cart__product--right-side">
+
+                    <div class="cart__quantity-box">
+
+                        <div class="cart__prod-quantity-selector-box">
+                            <button class="cart__prod-quanitity-btn cart__prod-quanitity-btn-decr">-</button>
+
+                            <span class="cart__quantity-text">[QUANTITY]</span>
+
+                            <button class="cart__prod-quanitity-btn cart__prod-quanitity-btn-incr">+</button>
+                        </div>
+
+                        <span class="cart__product-delete">X</span>
+
+                    </div>
+
+                    <div class="cart__price-box">
+                        <!-- LATER ADD THIS PIECE OF CODE (COMPARE AT PRICE) USING JS ONLY IF THERE IS A COMPARE PRICE -->
+                        <span class="cart__price cart__price--compare">
+                            [COMPARE AT]
+                        </span>
+
+                        <span class="cart__price cart__price--active">[MAIN-PRICE]</span>
+                    </div>
+                </div>
+                    </div>
+                    `;
+
+                    const cartBodyEl = document.querySelector('.cart__body');
+                    
+                    cartHTML = cartHTML
+                        .replace("[KEY]", added.key)
+                        .replace("[TITLE]", added.title)
+                        .replace("[SRC]", added.image)
+                        .replace("[OPTION NAME]", added.variant_title)
+                        .replace("[QUANTITY]", added.quantity)
+                        .replace("[COMPARE AT]", added.compare_at_price ? intlPrice(added.compare_at_price) : '')
+                        .replace("[MAIN-PRICE]", intlPrice(added.final_line_price / 100));
+
+                        const cart = document.querySelector('.modal-cart');
+                        cart.classList.remove('hidden');
+
+                        if(emptyCartText) {
+                            emptyCartText.style.display='none';
+                            
+                        }
+
+                        if(productsEl)
+                                productsEl.insertAdjacentHTML('afterbegin', cartHTML);
+                                
+                        const cartProducts = Array.from(document.querySelectorAll('.cart__product'));
+                        const curEl = cartProducts.find(product => product.getAttribute('key') === added.key);
+                        const prodDeleteBtn = curEl.querySelector('.cart__product-delete');
+                        const qtyIncreaseBtn = [curEl.querySelector('.cart__prod-quanitity-btn-incr')];
+                        const qtyDecreaseBtn = [curEl.querySelector('.cart__prod-quanitity-btn-decr')];
+
+                        prodDeleteBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+
+                            handleDeleteBtn(this);
+                        });
+                        addQtyBtnsListener(qtyIncreaseBtn, qtyDecreaseBtn, qtyBtnsHandler);
+
+                        // console.log('CurEl from: ', curEl);
+
+                        /*
+                        const prodDeleteBtn = prodDeleteBtns[prodDeleteBtns.length - 1];
+                        const qtyIncreaseBtn = qtyIncreaseBtns[qtyIncreaseBtns.length - 1];
+                        const qtyDecreaseBtn = qtyDecreaseBtns[qtyDecreaseBtns.length - 1];
+
+                        prodDeleteBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        handleDeleteBtn(prodDeleteBtn);
+                        });
+
+                        qtyIncreaseBtn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        qtyBtnsHandler.call(this, "incr");
+                        });
+
+                        qtyDecreaseBtn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        qtyBtnsHandler.call(this, "decr");
+                        });
+                        */
+
+                        return fetch('/cart.js').then(res => res.json())
+                })
+                .then(data => {
+                    const summaryEl = document?.querySelector('.cart__summary');
+                    const cartBodyEl = document.querySelector('.cart__body');
+                    const totalPrice = intlPrice(data.total_price / 100);
+
+                    if(!summaryEl) {
+                        let summaryHTML = `
+                    <div class="cart__summary">
+                    <div class="cart__summary--upper">
+                        <div class="cart__summary-labels">
+                            <span class="cart__summary-label">Цена</span>
+
+                            <span class="cart__summary-label">ДДС</span>
+
+                            <span class="cart__summary-label">Доставка</span>
+                        </div>
+
+                        <div class="cart__summary-prices">
+                            <div class="cart__summary-final-prices">
+                                    <span class="cart__summary-price--compare">{{ cart.original_total_price | money}}</span>
+                            
+                                <span class="cart__summary-price--main">[CART_TOTAL_PRICE]</span>
+                            </div>
+
+                            Make it functional with JS
+                            <span class="cart__summary-price--tax">Изчисляват се преди покупка</span>
+
+                            <span class="cart__summary-price--shipping">Изчислява се преди покупка</span>
+                        </div>
+                    </div>
+
+                    <div class="cart__summary--btn-cont">
+                        <form action="/cart" method="post" novalidate>
+                            <button class="btn btn--full" id="checkout-btn" name="checkout" type="submit">Завършване на поръчка</button>
+                        </form>
+                    </div>
+                </div>
+                    `;
+                        summaryHTML = summaryHTML.replace('[CART_TOTAL_PRICE]', totalPrice);
+                        cartBodyEl.insertAdjacentHTML('afterend', summaryHTML)
+                    
+                    } else {
+                        const totalPriceEl = summaryEl.querySelector('.cart__summary-price--main');
+                        totalPriceEl.textContent = totalPrice;
+                        
+                    }
+                    console.log('CART_DATA__:', data);
+
+                //   const summary = document.querySelector(".cart__summary-price--main");
+                //   summary.textContent = intlPrice(data.total_price / 100);
+                })
+            
+                    
+                })
+
+            }
+
+            btnAddToCart.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                handleAddToCarts.call(this);
+
+            });
+
+    </script>
+
+    <script>
+                console.log("Start of JS Script file ");
+
+                const getRootImgUrl = img => {
+                    const src = img.getAttribute("src");
+                    const rootUrl = src.slice(0, src.lastIndexOf("_"));
+
+                    return rootUrl;
+                };
+
+                document.querySelectorAll("img").forEach(img => getRootImgUrl(img));
+
+                const mainImg = document.querySelector(".product-template__img--main");
+                const additionalImgContainer = document.querySelector(".product-template__img-cont--small");
+                const smallImages = document.querySelectorAll(".product-template__img--small");
+
+                const markActiveImg = (imgs) => {
+                    imgs.forEach(img => {
+                        img.classList.remove("product-template__img--small--active");
+                        const rootUrl = getRootImgUrl(img);
+                        const mainImgRootUrl = getRootImgUrl(mainImg);
+
+                        if (rootUrl === mainImgRootUrl) {
+                            img.classList.add("product-template__img--small--active");
+                        }
+                    });
+                };
+
+                markActiveImg(smallImages);
+
+                // Loop through all of the small images
+
+                // If any image's url is equal to the url of the main, add --active class
+
+                "".lastIndexOf("_");
+
+                additionalImgContainer.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const clicked = e.target;
+
+                    // Guard Clause
+                    if (! clicked.getAttribute("src")) 
+                        return;
+                    
+
+                    mainImg.setAttribute("src", clicked.getAttribute("src").replace("_100x", "_1080x"));
+                    markActiveImg(smallImages)
+
+                });
+    </script>
+
+        {% style %}
+        .no-display {
+          display: none !important;
+        }
+        .selects {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        
+        .select-group {
+            flex: 0 0 50%;
+        }
+
+        .empty-cart-message {
+
+        }
+        
+        select {
+            width: 100%;
+            border: 1px solid #e67e22;
+            padding: 1rem 2.4rem;
+        
+        }
+        
+        .select-variant {
+            margin-bottom: 2.4rem;
+        }
+        
+        .section--product-template {
+            padding: 4.8rem 0;
+        }
+        
+        .product-template {
+            display: flex;
+            gap: 4.8rem;
+            padding-left: 4rem;
+        }
+        
+        .product-template__img-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 3.2rem;
+			flex: 0 0 50%;
+        }
+        
+        .product-template__img-cont--main {
+        }
+        
+        .product-template__img--main {
+          display: block;
+          transition: all .3s;
+          width: 90%;
+          margin: 0 auto;
+        }
+        
+        .product-template__img-cont--small {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 2.4rem;
+            cursor: pointer;
+            align-self: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .product-template__img--small {
+          border: 2px solid transparent;
+			padding: .6rem;
+        }
+        
+        .product-template__img--small--active {
+          border: 2px solid #e67e22;
+        }
+        
+        .product-template__details {
+            padding: 0 3.2rem;
+        }
+
+        .product-template__vendor {
+            text-transform: uppercase;
+            font-weight: 600;
+			font-size: 1.4rem;
+        }
+        
+        .product-template__title {
+            margin-bottom: 3rem;
+            font-size: 3rem;
+			color: #8a4c14;
+
+        }
+        
+        .product-template__description {
+            width: 90%;
+            font-size: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 4.8rem;
+        }
+
+        .product-template__description ul li {
+            margin-left: 4.8rem;
+        }
+
+        .product-template__description p:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        .product-template__variants {
+           /* display: flex;
+            flex-wrap: wrap;
+            gap: 2.4rem;
+            margin-bottom: 2.4rem;
+            */
+        
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 2.4rem;
+            gap: 1.6rem;
+            
+        }
+        
+        .product-template__option-name {
+          font-size: 2rem;
+          font-weight: 500;
+          margin-bottom: 1rem;
+        }
+        
+        .product-template__variant-box {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid #aaa;
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+        
+        .product-template__variant-box:hover {
+            background-color: #eee;
+        }
+        
+        .product-template__variant-prices {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+		  padding: 0 2rem;
+        }
+        
+        .product-template__variant-price{
+          font-size: 2rem;
+          font-weight: 600;
+          color: #111;
+        }
+        
+        .product-template__variant-price--main {
+          color: #e67e22;
+        }
+        
+        .product-template__variant-price--compare{ 
+          text-decoration: line-through;
+        
+        }
+        
+        .product-template__price--compare {
+            text-decoration: line-through;
+            font-size: 1.8rem;
+        }
+        
+        .product-template__price--main {
+            font-size: 2.2rem;
+            color: #e67e22;
+        }
+        
+        .product-template__option-name {
+          display: block;
+        }
+        
+        .product-template__submit-container {
+          display: flex;
+          align-items: center;
+          gap: 1.6rem;
+        }
+        .product-template__qty-select {
+          flex: 0 0 20%;
+          font-size: 1.8rem;
+          text-align: center;
+        }
+
+        
+        .btn--add-to-cart {
+          flex: 1;
+        }
+        
+        .product-template__checkbox:checked + .product-template__variant-box {
+          outline: 4px solid #e67e22;
+        }
+        
+        .product-template__variant-title {
+          font-size: 1.8rem;
+        }
+
+        .cart__prod-option-name {
+            display: none;
+        }
+
+        @media only screen and (max-width: 81.25em) {
+            .product-template__description {
+                width: 100%;
+            }
+
+            .product-template__submit-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media only screen and (max-width: 71.25em) {
+            .section--product-template {
+                padding: 6.4rem 0;
+            }
+            .product-template {
+                flex-direction: column;
+                gap: 4.8rem;
+                padding-left: 0;
+            }
+
+            .product-template__variants:not(:last-child) {
+                margin-bottom: 4.8rem;
+            }
+
+            .product-template__submit-container {
+                width: 85%;
+                margin: 0 auto;
+            }
+
+            .product-template__qty-select {
+                flex: 0;
+            }
+        }
+
+        @media only screen and (max-width: 30.625em) {
+            .product-template__variants {
+                grid-template-columns: 1fr;
+            }
+
+            .product-template__img-cont--small {
+                padding: 0 1.2rem;
+            }
+
+            .product-template__details {
+                padding-left: 3.2rem;
+                padding-right: 1rem;
+            }
+
+        }
+
+        
+        
+        {% endstyle %}
+        
+        {% schema %}
+          {
+            "name": "Product",
+        	"tag": "section",
+        	"class": "section--product-template",
+            "settings": [
+        		{
+        			"type": "checkbox",
+        			"id": "show_vendor",
+        			"label": "Show vendor"
+        		}
+        	]
+          }
+        {% endschema %}

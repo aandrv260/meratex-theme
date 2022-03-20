@@ -1,0 +1,104 @@
+
+<div class="page--contact container">
+	<h1 class="contact__heading">{{ page.title | escape }}</h1>
+  
+	{% form 'contact', class: 'contact-form' %}
+  	{% if form.posted_successfully? %} 
+<!--   Thank you for your contact -->
+  {% render 'modal' %}
+  {% endif %}
+  	{{ form.errors | default_errors }}
+  	<div class="contact-form__row-groups">
+  		<div class="contact-form__input-group">
+  			<label class="contact-form__label" for="ContactFormName">Име</label>
+  			<input class="contact-form__input" type="text" id="ContactFormName" name="contact[name]">
+  		</div>
+  
+  		<div class="contact-form__input-group">
+  			<label class="contact-form__label" for="ContactFormEmail">Имейл</label>
+  			<input class="contact-form__input" type="email" id="ContactFormEmail" name="contact[email]">
+  		</div>
+  	</div>
+  	
+  	<div class="contact-form__input-group">
+  		<label class="contact-form__label" for="ContactFormPhone">Телефон</label>
+  		<input class="contact-form__input" type="tel" id="ContactFormPhone" name="contact[phone]">
+  </div>
+  	<label class="contact-form__label" for="ContactFormMessage">Съобщение</label>
+  	<textarea class="contact-form__msg" rows="10" id="ContactFormMessage" name="contact[body]"></textarea>
+<!--   	<input class="contact-form__submit-btn btn btn--outline" type="submit" value="send"> -->
+  <button type="submit" class="contact-form__submit-btn btn btn--full">Изпрати</button>
+	{% endform %}
+</div>
+
+{% style %}
+.contact__heading {
+	margin-bottom: 4.4rem;
+}
+.page--contact {
+	text-align: center;
+	padding: 4.8rem 0 6.4rem;
+}
+
+.contact-form {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.contact-form__label {
+	width: 100%;
+	text-align: left;
+	text-transform: capitalize;
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+
+.contact-form__input,
+.contact-form__msg {
+padding: .6rem 1rem;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+	font-size:2rem;
+	width: 100%;
+
+}
+
+.contact-form__input--only {
+	margin-bottom: 1rem;	
+}
+
+
+.contact-form__msg {
+	resize: vertical;
+	max-height: 40rem;
+	margin-bottom: 2.4rem;
+}
+.contact-form__submit-btn {
+	width: 50%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.contact-form__input-group {
+	margin-bottom: .7rem;
+}
+
+.contact-form__row-groups {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+	gap: 2rem;
+	margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 46.87em) {
+	.contact-form__row-groups {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	
+	.contact-form {
+		width: 80%;
+	}
+}
+{% endstyle %}

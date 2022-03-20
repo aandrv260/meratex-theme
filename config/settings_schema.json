@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://github.com/Shopify/themekit",
+    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name": "Basic Information",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "base_font",
+        "label": "Base Font",
+        "default": "helvetica_n4"
+      },
+
+      {
+        "type": "link_list",
+        "id": "mob_nav_menu",
+        "label": "Mobile Menu",
+        "default": "main-menu"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "id": "contact_phone",
+        "type": "text",
+        "label": "Phone number",
+        "default": "555-123-4565"
+      },
+      {
+        "id": "contact_email",
+        "type": "text",
+        "label": "Email",
+        "default": "hristo@meratex.bg"
+      }
+    ]
+  },
+
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "id": "slideshow_items",
+        "type": "select",
+        "label": "Slideshow Items",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+
+          {
+            "value": "4",
+            "label": "4"
+          },
+
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      }
+    ]
+  }
+]

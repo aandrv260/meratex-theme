@@ -1,0 +1,257 @@
+{% assign collection = section.settings.collection %}
+{% assign heading = section.settings.headline %}
+
+{% if heading != blank %}
+	<div class="u-center-text u-margin-bottom-sm">
+		<h2 class="heading__secondary">{{ heading }}</h2>
+	</div>
+{% endif %}
+
+<script>
+	const featuredCollProducts = [];
+	const featuredProdImages = [];
+</script>
+
+<div class="featured-collection">
+  {% for product in collection.products limit: 4 %}
+
+  <a href="{{ product.url }}" class="featured-collection__product" id="{{ product.id }}">
+      <img class="featured-collection__img" src="{{ product.featured_image | img_url: '1080x' }}" />
+	
+	  <h3 class="heading__tertiary u-center-text">{{ product.title }}</h3>
+
+      <div class="featured-collection__product-prices u-center-text">
+
+      {% if product.compare_at_price %}
+      <span class="featured-collection__product-compare-price" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+
+      <span class="featured-collection__product-price">{{ product.price | money }}</span>
+    </div>
+
+  </a>
+  <script>
+	  {
+		  const curProduct = {{ product | json }};
+			const prodImgs = [
+				'{{ product.images[0] | img_url: '1080x'}}',
+				'{{ product.images[1] | img_url: '1080x'}}'
+			];
+			// console.log('imgds[],', prodImgs)
+		  featuredCollProducts.push(curProduct);
+		  featuredProdImages.push({
+			  id: curProduct.id,
+			  images: prodImgs
+		  });
+	  }
+	{
+		// const imgElement = featuredCollection.querySelector('.featured-collection__img');
+		// const mainImg = "{{ product.featured_image | img_url: '350x' }}";
+		// const secondImg = "{{ product.images[1] | img_url: '350x' }}";
+		// const product = {{ product | json }};	
+		// console.log('Featured-prrrooo', product)
+		// // const images = [mainImg, secondImg];
+		// // console.log(images);
+
+		// setInterval(() => {
+		// 	// Change the image by changing its src attribute
+		// 	// console.log(12)
+			
+
+		// },5000);
+	}
+</script>
+  {% endfor %}
+  
+  
+
+</div>
+
+<script>
+	const featuredCollection = document.querySelector('.featured-collection');
+	const featuredProducts = featuredCollection.querySelectorAll('.featured-collection__product');
+
+	console.log(featuredCollProducts);
+	console.log('curProdImagesObjk', featuredProdImages);
+
+	// featuredProducts.forEach(prodEl => {
+	// 	const prodId = +prodEl.getAttribute('id');
+	// 	const imgEl = prodEl.querySelector('.featured-collection__img');
+	// 	const curProduct = featuredProdImages.find(prod => prod.id === prodId);
+	// 	imgEl.src = curProduct.images[1];
+
+	// })
+
+	setInterval(() => {
+		featuredProducts.forEach(prodEl => {
+			const prodId = +prodEl.getAttribute('id');
+			const imgEl = prodEl.querySelector('.featured-collection__img');
+			const curProduct = featuredProdImages.find(prod => prod.id === prodId);
+			const curImgSrc = imgEl.getAttribute('src');
+			// console.log('curProd', curImgSrc === curProduct.images[0], curProduct);
+
+			// curProduct.images.forEach(img => {
+			// 	if (curImgSrc === img) {
+
+			// 	}
+			// })
+
+			for (const img of curProduct.images) {
+				if (curImgSrc === img) continue;
+
+				imgEl.setAttribute('src', img);	
+			}
+			
+		})
+	}, 3000);
+
+	// console.log('featyred',featuredCollection, featuredProducts);
+
+	// const images = 	featuredCollProducts.map(prod => {
+	// 	return {
+	// 		id: prod.id,
+	// 		images: [prod.images[0], prod.images[1]]
+	// 	}
+	// });
+
+	// console.log(images);
+
+	// setInterval(() => {
+	// 	featuredProducts.forEach(prodEl => {
+	// 		const prodId = prodEl.getAttribute('id');
+	// 		const product = images.find(prod => prod.id.toString() === prodId);
+	// 		const imgEl = prodEl.querySelector('.featured-collection__img');
+	// 		const curImg = product.images.find(img => imgEl.src === img);
+	// 		console.log(curImg)
+	// 		// product.images.forEach(img => {
+	// 		// 	if(imgEl.src !== img) {
+	// 		// 		console.log(imgEl, img);
+	// 		// 	}
+	// 		// })
+	// 	})
+	// }, 2000);
+
+
+	// featuredProducts.forEach(prodEl => {
+	// 	const prodId = prodEl.getAttribute('id');
+	// 	const productObj = featuredCollProducts.find(prod => prod.id.toString() === prodId);
+	// 	console.log('prodObj', productObj);
+	// 	const images = [productObj.images[0], productObj.images[1]];
+	// 	const imgEl = prodEl.querySelector('.featured-collection__img');
+
+	// 	setInterval(() => {
+	// 		images.forEach(img => {
+	// 			if(imgEl.src !== img) {
+	// 				imgEl.src = img;
+	// 			}
+	// 		})
+	// 	}, 2000)
+	// })
+</script>
+
+{% if section.settings.enable_view_btn %}
+<div class="u-center-text">
+  <a href="{{ collection.url }}" class="btn btn--full">Преглед на всички</a>
+</div>
+{% endif %}
+
+{% style %}
+
+.featured-collection {
+	display: grid;
+	grid-template-columns: repeat(3, 1.2fr);
+	align-items: center;
+	justify-content: center;
+	gap: 4.8rem 2.4rem;
+	padding: 1.6rem 3.2rem;
+}
+
+.section--featured-collection {
+	display: flex;
+	flex-direction: column;
+	padding: 9.8rem 0;
+	justify-content: center;
+	gap: 6.4rem;
+	overflow-x: hidden;
+}
+
+.featured-collection__product {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-end;
+}
+
+.featured-collection__product:hover {
+	background-color: rgba(254, 249, 244, 0.69);
+}
+
+.featured-collection__img {
+	margin-bottom: 1.6rem;
+	border-radius: 3px;
+	height: 37rem;
+	width: 100%;
+}
+
+.featured-collection__product-prices {
+	font-size: 1.8rem;
+}
+
+.featured-collection__product-price {
+	color: #e67e22;
+}
+
+
+@media only screen and (max-width: 1500px) {
+	.featured-collection {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media only screen and (max-width: 1150px) {
+	.featured-collection {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media only screen and (max-width: 46.87em) {
+	.featured-collection {
+		grid-template-columns: 1fr;
+	}
+}
+
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Featured Collection",
+	"tag": "section",
+	"class": "section--featured-collection",
+    "settings": [
+		{
+			"type": "text",
+			"id": "headline",
+			"label": "Headline"
+		},
+
+		{
+      		"type": "collection",
+      		"id": "collection",
+      		"label": "Collection"
+    	},
+		
+		{
+      		"type": "checkbox",
+      		"id": "enable_view_btn",
+      		"label": "Enable View All Button",
+      		"default": true
+    	}
+	],
+
+	"presets": [
+		{
+			"category": "Custom Section",
+			"name": "Featured Collection"
+		}
+	]
+  }
+{% endschema %}

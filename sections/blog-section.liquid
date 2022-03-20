@@ -1,0 +1,134 @@
+<div class="blog">
+
+    <div class="u-center-text u-margin-bottom-md">
+        <h1 class="blog__heading">{{ blog.title }}</h1>
+    </div>
+  
+    <div class="blog__articles">
+      {% for article in blog.articles %}
+        <div class="blog__article">
+          <img class="blog__article-img" src="{{ article.image | img_url: '300x' }}" alt="{{ article.image.alt }}" />
+          <h3 class="blog__article-heading">{{ article.title }}</h3>
+          {% if show_author %}
+            <span class="blog__article-author">{{ article.author }}</span>
+          {% endif %}
+          <p class="blog__article-content">{{ article.content | strip_html | truncate: 150 }}</p>
+          <a href="{{ article.url }}" class="blog__article-link">Прочетете повече &rarr;</a>
+        </div>
+      {% endfor %}
+    </div>
+  
+    {%- comment -%}
+    {% for article in blog.articles %}
+        <div>
+            <h2>
+                <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            {{ article.author }}
+            @
+            {{ article.created_at }}
+            <div>
+                {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                {% else %}
+                    <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    {%- endcomment -%}
+  
+  </div>
+  
+  {% style %}
+  .blog {
+  padding: 3.2rem 0;
+  }
+  
+  .blog__heading {
+  font-size: 4.8rem;
+  color: #e67e22;
+  }
+
+  .blog__articles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 1rem 3.2rem 1rem 6.4rem;
+      justify-items: end;
+	  gap: 4.8rem;
+  }
+  .blog__article {
+	display: flex;
+	flex-direction: column;
+  }
+  .blog__article-img {  
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+  .blog__article-heading {
+    color: #e67e22;
+    font-size: 2.4rem;
+    margin-bottom: .6rem;
+  }
+  .blog__article-content {
+    width: 95%;
+    letter-spacing: .5px;
+    margin-bottom: 1.4rem;
+    
+  }
+
+  .blog__article-link {
+      color: #e67e22;
+      font-size: 1.8rem;
+      letter-spacing: .7px;
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .blog__articles {
+       grid-template-columns: repeat(3, 1fr); 
+       row-gap: 6rem;
+    }
+  }
+
+  @media only screen and (max-width: 71.25em) {
+    .blog__articles {
+       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .blog__article-content {
+      width: 70%;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .blog__article-content {
+      width: 90%;
+    }
+  }
+
+  @media only screen and (max-width: 46.87em) {
+    .blog__articles {
+      grid-template-columns: 1fr;
+   }
+  } 
+
+  @media only screen and (max-width: 30.625em) {
+    .blog__articles {
+      padding: 1rem 2.4rem;
+    }
+
+    .blog__article-img {
+      width: 90%;
+    }
+  }
+  {% endstyle %}
+
+{% schema %}
+    {
+        "name": "blog",
+        "tag": "section",
+        "settings": [
+            
+        ]
+    }
+{% endschema %}

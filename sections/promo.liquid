@@ -1,0 +1,117 @@
+{% if section.settings.enable_promo_bar %}
+    <div class="promo">
+        <div class="empty">
+            <a href="tel:{{ settings.contact_phone | replace: ' ', '' | strip }}">{{ settings.contact_phone }}</a>
+        </div>
+
+        <div class="promo__slider">
+            <span class="arr l-arr">&larr;</span>
+            <div class="promo__slideshow">
+                <span class="promo__text">
+                    <a href="{{ section.settings.text_link_1 }}">
+                        {{ section.settings.promo_text_1 }}
+                    </a>
+                </span>
+
+                {% if section.settings.promo_text_2 != blank %}
+
+                    <span class="promo__text">
+                        <a href="{{ section.settings.text_link_2 }}">
+                            {{ section.settings.promo_text_2 }}</a>
+
+                    </span>
+                {% endif %}
+            </div>
+            <span class="arr r-arr">&rarr;</span>
+        </div>
+
+        <div class="promo__contact">
+            <span class="promo__contact-info">
+                {% if section.settings.contact_type == 'phone' %}
+                    <a href="tel:{{ settings.contact_phone }}">{{ settings.contact_phone }}</a>
+
+                {% else %}
+                    <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+                {% endif %}
+
+            </span>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector(".promo__slideshow");
+        const textSlides = document.querySelectorAll(".promo__text");
+        const btnLeft = document.querySelector(".l-arr");
+        const btnRight = document.querySelector(".r-arr");
+
+        promoSlideshow(textSlides, btnLeft, btnRight);
+    </script>
+
+{% style %}
+.promo .arr {
+    display: none;
+}
+{% endstyle %}
+{% endif %}
+
+{% schema %}
+{
+    "name": "Promo Bar",
+    "settings": [
+		{
+			"type": "checkbox",
+			"id": "enable_promo_bar",
+			"label": "Enable Promo bar",
+			"default": true
+		},
+
+		{
+			"type": "text",
+			"id": "promo_text_1",
+			"label": "Promo 1",
+			"default": "Безплатна доставка за поръчки над 500лв."
+		},
+
+		{
+			"type": "url",
+			"id": "text_link_1",
+			"label": "Promo 1 link",
+			"default": "/"
+		},
+
+		{
+			"type": "text",
+			"id": "promo_text_2",
+			"label": "Promo 2",
+			"default": "Huge discounts for order over $50"
+		},
+
+		{
+			"type": "url",
+			"id": "text_link_2",
+			"label": "Promo 2 link",
+			"default": "/"
+		},
+
+		{
+      "type": "select",
+      "id": "contact_type",
+      "label": "Contact type",
+      "options": [
+        	{
+          		"value": "email",
+          		"label": "Email"
+        	},
+
+        	{
+          		"value": "phone",
+          		"label": "Phone"
+        	}
+      	  ]
+    	}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

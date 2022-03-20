@@ -1,0 +1,319 @@
+{% if section.settings.headline != blank %}
+  
+  {% render 'section-heading' with section.settings.headline as headline %}
+  
+  {% endif %}
+<div class="featured-products">
+  {% for block in section.blocks %}
+  	{% if block.settings.product != blank and block.settings.top_label != blank and block.settings.image_label and block.settings.benefit_1 %}
+  	{% assign product = block.settings.product %}
+  	<div class="featured-products__card">
+      <span class="featured-products__discount-label">
+        {{ block.settings.top_label }}
+      </span>
+      
+      <div class="featured-products__desc-box">
+          <span class="featured-products__type">{{ product.type }}</span>
+          <h3 class="heading__tertiary">{{ product.title }}</h3>
+      </div>
+      
+      <div class="featured-products__img-box">
+          <img src="{{ product.featured_image | img_url: '500x300' }}" alt="Some alt" class="featured-products__img" />
+          <span class="featured-products__img-label">{{ block.settings.image_label }}</span>
+      </div>
+      
+      <ul class="featured-products__list">
+          <li class="featured-products__list-item">
+            <span>&#129170;</span>
+            {{ block.settings.benefit_1 }}
+          </li>
+          
+          <li class="featured-products__list-item">
+                        <span>&#129170;</span>
+
+            {{ block.settings.benefit_2 }}
+          </li>
+         
+          <li class="featured-products__list-item">
+                        <span>&#129170;</span>
+
+            {{ block.settings.benefit_3 }}
+          </li>
+      </ul>
+      
+      <div class="featured-products__price-box">
+          <span class="featured-products__price-text">Цени от:</span>
+          <div class="featured-products__prices" style="{% if product.compare_at_price %} justify-content: space-between; {% else %} justify-content: center; {% endif %}">
+            
+            {% if product.compare_at_price  %}
+              <span class="featured-products__compare-price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+            <span class="featured-products__price">{{ product.price | money }}</span>
+          </div>
+      </div>
+      
+      		<div class="u-center-text">
+          <a href="{{ product.url }}" class="btn btn--full">{{ block.settings.button_text }}</a>
+      </div>
+      
+    </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% if section.settings.additional_msg != blank %}
+  <div class="u-center-text">
+    <p class="additional-msg">{{ section.settings.additional_msg }}</p>
+  </div>
+
+{% endif %}
+
+{% style %}
+	
+	.section--featured-products {
+		background-color: rgb(247,247,247);
+		padding: 8rem 6rem;
+	}
+
+	.featured-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1.5fr);
+    align-items: center;
+	  gap: 6.4rem;
+    margin: 0 auto 10rem;
+  }
+
+	.featured-products__desc-box h3 {
+		width: 80%;
+	}
+
+  .featured-products__card {
+    position: relative;
+    background-color: #fff;
+    padding: 4.8rem 0 3.2rem;
+	box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .3);
+	border-radius: 8px;
+	transform: translateY(0) scale(.95);
+	transition: all .3s;
+  }
+
+  .featured-products__card:hover {
+	transform: translateY(-1rem) scale(.95);
+  }
+
+  .featured-products__discount-label {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #5c320e;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .featured-products__desc-box {
+    padding: 0 2.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .featured-products__type {
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2.4rem;
+  }
+
+  
+
+
+  .featured-products__img-box {
+    position: relative;
+    height: 30rem;
+    background-repeat: no-repeat;
+	background-size: cover;
+  }
+
+  .featured-products__img-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e98b38;
+	color: #fff;
+  }
+
+  .featured-products__img {
+	width: 100%;
+	height: 100%;
+  }
+
+  .featured-products__list {
+    margin-left: 3.2rem;
+    list-style: none;
+    padding-top: 2.4rem;
+    padding-right: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .featured-products__list-item {
+    padding-left: 0.5rem;
+    font-size: 1.8rem;
+    color: #444;
+    width: 95%;
+    font-weight: 400;
+    /* text-decoration: line-through; */
+  }
+
+  .featured-products__list-item span {
+		color: #e67e22;
+		font-size: 2.4rem;
+	}
+
+  .featured-products__list-item:not(:last-child) {
+    margin-bottom: 1.4rem;
+  }
+
+  .featured-products__price-box {
+    padding-left: 2rem;
+    margin-bottom: 2.4rem;
+    text-align: center;
+  }
+
+  .featured-products__price-text {
+    font-size: 2rem;
+    display: none;
+  }
+
+  .featured-products__prices {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .featured-products__compare-price {
+    font-size: 3rem;
+    color: #000;
+    text-decoration: line-through;
+  }
+
+  .featured-products__price {
+    font-size: 3rem;
+    color: #e67e22;
+    font-weight: 700;
+  }
+  
+  @media only screen and (max-width: 81.25em) { /* 1300px */
+    .section--featured-products {
+      padding: 8rem 4.8rem;
+
+    }
+
+    .featured-products {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media only screen and (max-width: 46.87em) {
+    .featured-products {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-products__card {
+      width: 99%;
+      margin: 0 auto;
+    }
+
+    .section--featured-products {
+      padding: 8rem 1rem;
+    }
+  }
+
+
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Featured products",
+	"tag": "section",
+	"class": "section--featured-products",
+	"max_blocks": 3,
+    "settings": [
+		{
+			"type": "text",
+			"id": "headline",
+			"label": "Headline"
+		},
+
+		{
+			"type": "text",
+			"id": "additional_msg",
+			"label": "Additional message"
+		}
+	],
+
+	"blocks": [
+		{
+			"name": "Product card",
+			"type": "product_card",
+			"settings": [
+				{
+      				"type": "product",
+      				"id": "product",
+      				"label": "Product"
+    			},
+
+				{
+					"type": "text",
+					"id": "top_label",
+					"label": "Top of card label"
+				},
+
+				{
+					"type": "text",
+					"id": "image_label",
+					"label": "Image Label"
+				},
+
+				{
+					"type": "text",
+					"id": "benefit_1",
+					"label": "Benefit 1"
+				},
+
+				{
+					"type": "text",
+					"id": "benefit_2",
+					"label": "Benefit 2"
+				},
+
+				{
+					"type": "text",
+					"id": "benefit_3",
+					"label": "Benefit 3"
+				},
+
+				{
+					"type": "text",
+					"id": "button_text",
+					"label": "Button Text"
+				}
+			]
+		}
+	],
+	
+	"presets": [
+		{
+			"category": "Custom Section",
+			"name": "Featured products"
+			
+		}
+	]
+  }
+{% endschema %}

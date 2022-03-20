@@ -1,0 +1,65 @@
+{% if section.settings.message != blank %}
+<div class="quick-message">
+  <p class="quick-message__message">{{ section.settings.message }}</p>
+  <a href="{{ section.settings.link }}" class="link">{{ section.settings.link_text }}</a>
+</div>
+{% endif %}
+
+{% style %}
+	.section--quick-message {
+		padding: 4.8rem 0 3.7rem;
+	}
+
+	.quick-message {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		color: #fff;
+		background-color: #00354a;
+		padding: 1rem 0;
+		font-size: 2rem;	
+
+	}
+
+	.quick-message__message {
+		letter-spacing: .5px;
+	}
+
+	
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Quick Message",
+	"tag": "section",
+	"class": "section--quick-message",
+    "settings": [
+		{
+			"type": "text",
+			"id": "message",
+			"label": "Message"
+		},
+
+		{
+			"type": "text",
+			"id": "link_text",
+			"label": "Link Text"
+		},
+
+		{
+      		"type": "url",
+      		"id": "link",
+      		"label": "Link"
+    	}
+		
+	],
+
+	"presets": [
+		{
+			"category": "Custom Section",
+      		"name": "Quick Message"
+		}
+	]
+  }
+{% endschema %}

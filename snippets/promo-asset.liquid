@@ -1,0 +1,47 @@
+<div class="promo">
+        <div class="empty">
+            <a href="tel:{{ settings.contact_phone | replace: ' ', '' | strip }}">{{ settings.contact_phone }}</a>
+        </div>
+
+        <div class="promo__slider">
+            <span class="arr l-arr">&larr;</span>
+            <div class="promo__slideshow">
+                <span class="promo__text">
+                    <a href="{{ slider_link_1 }}">
+                        {{ slider_text_1 }}
+                    </a>
+                </span>
+
+                {% if slider_text_2 != blank %}
+
+                    <span class="promo__text">
+                        <a href="{{ slider_link_2 }}">
+                            {{ slider_text_2 }}
+                        </a>
+                    </span>
+                {% endif %}
+            </div>
+            <span class="arr r-arr">&rarr;</span>
+        </div>
+
+        <div class="promo__contact">
+            <span class="promo__contact-info">
+                {% if section.settings.contact_type == 'phone' %}
+                    <a href="tel:{{ settings.contact_phone }}">{{ settings.contact_phone }}</a>
+
+                {% else %}
+                    <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+                {% endif %}
+
+            </span>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector(".promo__slideshow");
+        const textSlides = document.querySelectorAll(".promo__text");
+        const btnLeft = document.querySelector(".l-arr");
+        const btnRight = document.querySelector(".r-arr");
+
+        promoSlideshow(textSlides, btnLeft, btnRight);
+    </script>

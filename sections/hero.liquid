@@ -1,0 +1,282 @@
+{% assign min = 1 %}
+{% assign max = 100000 %}
+{% assign diff = max | minus: min %}
+{% assign random_num = "now" | date: "%N" | modulo: diff | plus: min %}
+{% assign slides = section.blocks | size %}
+
+{% capture unique_class %}slideshow__slide--{{ random_num }}{% endcapture %}
+{% capture unique_slider_class %}slideshow__slider--{{ random_num }}{% endcapture %}
+
+<div class="slideshow">
+    <div class="slideshow__slider slideshow__slider--{{ random_num }}">
+      {% if slides > 1 %}
+        <span class="slideshow__btn-left">&#60;</span>
+        <span class="slideshow__btn-right">&#62;</span>
+      {% endif %}
+      
+        {% assign blocks_num = section.blocks.size %}
+      
+        {% for block in section.blocks %}
+            <div class="slideshow__slide {{ unique_class }}" style="background-image: linear-gradient(135deg, rgba(255,255,255, .9) 0%, rgba(255,255,255, .5) 55%, transparent 65%), url('{{ block.settings.slide | img_url: '1920x1080', crop: 'center', scale: 2 }}')">
+                <div class="slideshow__content-box">
+
+					{% comment %}
+						<span class="slideshow__subheading">
+							{{ block.settings.subheading }}
+						</span>
+					{% endcomment %}
+
+                    <h1 class="heading__primary">
+                        {{ block.settings.heading }}
+                    </h1>
+
+                    <p class="slideshow__description">{{ block.settings.description }}</p>
+
+                    {% if block.settings.button_link and block.settings.button_text != blank %}
+                        <a href="{{ block.settings.button_link }}" class="btn btn--full">{{ block.settings.button_text }}</a>
+                    {% endif %}
+                </div>
+
+            </div>
+        {% endfor %}
+        <script>
+          {
+			const cla = {{ unique_class | json }};
+            const sliderClass = {{ unique_slider_class | json }};
+            const slider = document.querySelector(`.${sliderClass}`);
+            const slides = slider.querySelectorAll('.slideshow__slide');
+  			const btnSlideshowLeft = slider.querySelectorAll(".slideshow__btn-left");
+  			const btnSlideshowRight = slider.querySelectorAll(".slideshow__btn-right");
+  
+            {% if section.settings.auto_slideshow %}
+            	const timer = {{ section.settings.slide_timer }};
+  				slideshow(slides, btnSlideshowLeft, btnSlideshowRight, timer);
+            {% else %}
+            	  slideshow(slides, btnSlideshowLeft, btnSlideshowRight, false);
+            {% endif %}
+          }
+      </script>
+
+    </div>
+
+</div>
+
+{% style %}
+
+.slideshow {
+    width: 100%;
+    height: 60rem;
+}
+
+body {
+    height: 130vh;
+}
+
+.slideshow__slider {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow__btn-left,
+.slideshow__btn-right {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    font-size: 3rem;
+    transform: translateY(-50%);
+    background-color: #fff;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.slideshow__btn-left {
+    left: 3rem;
+}
+
+.slideshow__btn-right {
+    right: 3rem;
+
+}
+
+.slideshow__slide {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+
+.slideshow__content-box {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+
+
+}
+
+.slideshow__subheading {
+    display: inline-block;
+    font-size: 2rem;
+    color: #b8651b;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.heading__primary {
+    font-size: 5.4rem;
+    margin-bottom: 1.4rem;
+    color: #e67e22;
+    font-weight: 600;
+	
+}
+
+.slideshow__description {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 71.25em) {
+	.heading__primary {
+		font-size: 4rem;
+	}
+
+	.slideshow__subheading {
+		font-size: 1.8rem;
+	}
+
+	.slideshow__btn-left,
+	.slideshow__btn-right {
+		height: 4.5rem;
+		width: 4.5rem;
+	}
+}
+
+@media only screen and (max-width: 56.25em) {
+	.slideshow__btn-left,
+	.slideshow__btn-right {
+		display: none;
+	}
+
+	html {
+		font-size: 56.25%;
+	}
+
+	.heading__primary {
+		font-size: 3.8rem;
+	}
+}
+
+@media only screen and (max-width: 46.87em) {
+	.slideshow__content-box {
+		left: 5%;
+	}
+}
+
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "Slideshow",
+    "settings": [
+		{
+      		"type": "checkbox",
+      		"id": "auto_slideshow",
+      		"label": "Automatic slideshow",
+      		"default": true
+    	},
+
+		{
+			"type": "select",	
+			"id": "slide_timer",
+			"label": "Slideshow timer (in seconds)",
+			"options": [
+				{
+					"value": "3",
+					"label": "3"
+				},
+
+				{
+					"value": "5",
+					"label": "5"
+				},
+
+				{
+					"value": "10",
+					"label": "10"
+				},
+
+				{
+					"value": "15",
+					"label": "15"
+				}
+			]
+		}
+	],
+
+	"blocks": [
+		{
+			"type": "image",
+			"name": "Slide",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "slide",
+					"label": "Slide image"
+				},
+
+				{
+					"type": "text",
+					"id": "subheading",
+					"label": "Subheading",
+					"default": "Winter Sale"
+				},
+
+				{
+					"type": "text",
+					"id": "heading",
+					"label": "Heading",
+					"default": "Up to $400 OFF mattresses"
+				},
+		
+				{
+					"type": "textarea",
+					"id": "description",
+					"label": "Description",
+					"default": "<p>For a limited time, save big on the Original, Hybrid and Legend mattress</p>"
+                				},
+                
+                				{
+                  					"type": "text",
+                  					"id": "button_text",
+                  					"label": "Button Text",
+                					"default": "Shop sale"
+                				},
+                
+                				{
+                  					"type": "url",
+                  					"id": "button_link",
+                  					"label": "Button link"
+                				}
+                			]
+                		}
+                	],
+                
+                	"presets": [
+                		{
+                			"category": "Custom Section",
+                			"name": "Slideshow"
+                		}
+                	]
+                  }
+{% endschema %}

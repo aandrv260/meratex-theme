@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ page_title }}</title>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="description" content="{{ page_description | escape }}">
+        <link rel="canonical" href="{{ canonical_url }}">
+        <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
+
+<!-- 		    OPEN SANS     -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      
+		{{ content_for_header }}
+        <!-- Header hook for plugins -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <script crossorigin="anonymous" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{ 'application.css' | asset_url | stylesheet_tag }}
+        {{ 'application.js' | asset_url | script_tag }}
+
+    </head>
+    <body>
+
+        {% assign mob_nav_menu = settings.mob_nav_menu %}
+        <nav class="mob-nav mob-nav--hidden">
+         <button class="mob-nav-icon-close">X</button>
+
+            <ul class="mob-nav__list">
+                {% for link in mob_nav_menu.links %}
+                    <li class="mob-nav__list-item"><a href="{{ link.url }}" class="mob-nav__link">{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <div class="modal-cart hidden">
+            <div class="cart">
+                <div class="cart__upper-info">
+                    <div class="cart__upper-info__content">
+
+                        <span class="cart__cart-label">Количка</span>
+
+                        <span class="cart__contact-info">{{ settings.contact_phone }}</span>
+
+                        <button class="cart__link cart__close">Затвори</button>
+                    </div>
+
+                </div>
+
+                
+                <div class="cart__body">
+                    <div class="cart__products">
+                        {% if cart.item_count <= 0 %}
+                            <span class="empty-cart-message">Вашата количка е празна</span>
+                            
+                        {% else %}
+
+                            {% for item in cart.items %}
+
+                                <div class="cart__product" key="{{ item.key }}">
+                                    <div class="cart__img-name-box">
+                                        <div class="cart__img-box">
+                                            <img class="cart__img" src="{{ item.image | img_url: '100x' }}"/>
+                                        </div>
+
+                                        <div class="cart__name-box">
+                                            <span class="cart__prod-title">{{ item.title }}</span>
+
+                                            {% if item.variant.title != 'Default Title' %}
+                                                <span class="cart__prod-option-name">{{ item.variant.title }}</span>
+                                            {% endif %}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="cart__product--right-side">
+
+                                    <div class="cart__quantity-box">
+
+                                        <div class="cart__prod-quantity-selector-box">
+                                            <button class="cart__prod-quanitity-btn cart__prod-quanitity-btn-decr">-</button>
+
+                                            <span class="cart__quantity-text">{{item.quantity}}</span>
+
+                                            <button class="cart__prod-quanitity-btn cart__prod-quanitity-btn-incr">+</button>
+                                        </div>
+
+                                        <span class="cart__product-delete">X</span>
+
+                                    </div>
+                                    <div class="cart__price-box">
+                                        <!-- LATER ADD THIS PIECE OF CODE (COMPARE AT PRICE) USING JS ONLY IF THERE IS A COMPARE PRICE -->
+                                        <!-- item.original_line_price > item.final_line_price  -->
+                                        {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
+                                        {% assign price = item.variant.price | times: item.quantity %}
+
+                                        {% if compare_price > price %}
+                                            <span class="cart__price cart__price--compare">
+                                                {{ compare_price | money }}
+                                                
+                                            </span>
+                                        {% endif %}
+                                        <span class="cart__price cart__price--active">{{ item.final_line_price | money}}</span>
+                                    </div>
+                                </div>
+
+                                </div>
+                                
+
+                            {% endfor %}
+                                <!-- RECOMMENDATIONS HERE -->
+                            <div class="cart__slideshow-slider">
+                                <div class="cart__slideshow-slide">
+                                    <div class="cart__slideshow-product">
+                                        <div class="cart__slideshow-img-box">
+                                            <img class="cart__slideshow-img" src=""/>
+                                        </div>
+        
+                                        <div class="cart__name-box cart__slideshow-name-box">
+                                            <span class="cart__slide-prod-title cart__prod-title">Title</span>
+        
+                                            <span class="cart__slide-prod-option-name cart__prod-option-name">Option name</span>
+                                        </div>
+        
+                                        <div class="cart__slideshow-price-box">
+                                             <!-- LATER ADD THIS PIECE OF CODE (COMPARE AT PRICE) USING JS ONLY IF THERE IS A COMPARE PRICE  -->
+                                            <span class="cart__price cart__slide-price--compare cart__price--compare">
+                                                890 лв
+                                            </span>
+        
+                                            <span class="cart__price cart__slide-price--active cart__price--active">120 лв</span>
+                                        </div>
+                                    </div>
+        
+                                    <div class="cart__slideshow-btns">
+                                        <button class="cart__slideshow-btn btn btn--outline">Добави в количката</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <script>
+                                const id = {{cart.items[0].product.id}};   
+                                                          
+                                renderRecommendedProduct(id);
+
+                                const btnIncrease = document.querySelectorAll(
+                                 ".cart__prod-quanitity-btn-incr"
+                                );
+                                const btnDecrease = document.querySelectorAll(
+                                  ".cart__prod-quanitity-btn-decr"
+                                );
+
+                                addQtyBtnsListener(btnIncrease, btnDecrease, qtyBtnsHandler);
+                                
+                            </script>
+
+                         
+                        {% endif %}
+                        <!-- ALL INDIVIDUAL PRODUCTS HERE WITH JS -->
+                                                                                                                                                                                                                                                                                                       
+                    </div>
+                </div>
+
+                {% if cart.item_count > 0 %}
+                <div class="cart__summary">
+                    <div class="cart__summary--upper">
+                        <div class="cart__summary-labels">
+                            <span class="cart__summary-label">Цена</span>
+
+                            <span class="cart__summary-label">ДДС</span>
+
+                            <span class="cart__summary-label">Доставка</span>
+                        </div>
+
+                        <div class="cart__summary-prices">
+                            <div class="cart__summary-final-prices">
+                                <!-- Add a funtionality where you add this line here (compare price) only if there is such price in the object -->
+                                {% if cart.total_discount > 0 %}
+                                <span class="cart__summary-price--compare">{{ cart.original_total_price | money}}</span>
+                                {% endif %}
+                                <span class="cart__summary-price--main">{{ cart.total_price | money }}</span>
+                            </div>
+
+                            <!-- Make it functional with JS -->
+                            <span class="cart__summary-price--tax">Изчисляват се преди покупка</span>
+
+                            <span class="cart__summary-price--shipping">Изчислява се преди покупка</span>
+                        </div>
+                    </div>
+
+                    <div class="cart__summary--btn-cont">
+                        <form action="/cart" method="post" novalidate>
+                            <button class="btn btn--full" id="checkout-btn" name="checkout" type="submit">Завършване на поръчка</button>
+                        </form>
+                    </div>
+                </div> 
+                {% endif %}
+
+                <script>
+                    const modalCart = document.querySelector('.modal-cart');
+
+                    modalCart.addEventListener('click', function(e) {
+                        // e.preventDefault();
+                        if(!e.target.closest('.cart')) {
+                            this.classList.add('hidden');
+                        }
+                    });
+
+                    const cartCloseBtn = document.querySelector('.cart__close');
+                    cartCloseBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        this.closest('.modal-cart').classList.add('hidden');
+
+                    });
+                    
+                </script>
+            </div>
+
+               
+        </div>
+                {% section 'header' %}
+
+                <main role="main">
+                    {{ content_for_layout }}
+                  <script>
+                    function putPaddingToMain() {
+                      const main = document.querySelector('main');
+                      console.log(main, 'aaa')
+                      const header = document.querySelector('#shopify-section-header');
+                      const computedHeight = getComputedStyle(header).height;
+                    //   console.log('parsedMainPadding',Number.parseInt(computedHeight))
+                      main.style.paddingTop = `${computedHeight}`;
+                    // main.style.paddingTop = `${Number.parseInt(computedHeight) - 30}px`;
+                  	}
+                    putPaddingToMain()
+                  </script>
+                </main>
+
+                {% section 'footer' %}
+                <script>
+                    // MOB NAV
+                    const mobNav = document.querySelector(".mob-nav");
+                    const mobNavOpenIcon = document.querySelector('.mob-nav-icon');
+                    const mobNavCloseIcon = document.querySelector('.mob-nav-icon-close');
+                    console.log(mobNav, mobNavOpenIcon);
+
+                    mobNavOpenIcon.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        mobNav.classList.remove('mob-nav--hidden');
+                        console.log('a');
+                    });
+
+                    mobNavCloseIcon.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        mobNav.classList.add('mob-nav--hidden');
+                    });
+                </script>
+                <style>
+                    @media only screen and (max-width:71.25em) {
+                        
+                        .mob-nav-icon {
+                            display: flex;
+                        }
+                    }
+                </style>
+            </body>
+        <!-- </html> -->
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<div class="modal">
+  <div class="modal__content">
+    <span class="modal__close">X</span>
+    <p>Благодарим, че се свързахте с нас.</p>
+  </div>
+</div>
+
+{% style %}
+	.hidden {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 10000;
+		background-color: rgba(255, 255, 255, .1);
+		transition: all .3s;
+	}
+
+	.modal__content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;	
+		height: 20rem;
+		width: 70rem;
+		background-color: rgba(238, 238, 238, .9);
+		color: #333;
+	}
+
+	.modal__close {
+		position: absolute;
+		top: 1.4rem;
+		right: 2.4rem;
+		font-size: 1.8rem;
+		cursor: pointer;
+	}
+
+
+{% endstyle %}
+
+<script>
+  const modal = document.querySelector('.modal');
+  const modalBtnClose = document.querySelector('.modal__close');
+  console.log(modal, modalBtnClose);
+  modalBtnClose.addEventListener('click', () => {
+     modal.classList.add('hidden');
+  setTimeout(() => {
+  	modal.remove();
+  	console.log('removed modal!');
+  }, 2000)
+  });
+</script>
