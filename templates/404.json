@@ -4,9 +4,17 @@
       "type": "404-template",
       "settings": {
       }
+    },
+    "166118462697cfbbad": {
+      "type": "newsletter",
+      "settings": {
+        "form_label": "",
+        "btn_text": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "166118462697cfbbad"
   ]
 }
