@@ -1,12 +1,44 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "404 Template",
+  "settings": []
+}
 {% endschema %}
+  
+{% comment %} <div class="container u-center-text error-page">
+    <h1 class="heading__primary">Страницата не бе намерена</h1>
+    <p class="error-page__desc">Съжаляваме! Страницата, която търсите не съществува. Моля посетете нашата начална страница</p>
+    <div class="error-page__btn">
+        <a href="/" class="btn btn--full">Назад</a>
+    </div>
+</div>
 
-{% stylesheet %}
-{% endstylesheet %}
+{% style %}
+.error-page {
+    padding: 6.4rem 0 12.8rem;
+    width: 40%;
 
-{% javascript %}
-{% endjavascript %}
+}
+
+.error-page .heading__primary {
+    font-size: 4.8rem;
+    font-weight: 600;
+    margin-bottom: 2.8rem;
+}
+
+.error-page__desc {
+    font-size: 1.8rem;
+    margin: 0 auto;
+    color: #444;
+    margin-bottom: 2.4rem;
+    text-align: left;
+}
+
+.error-page__btn {
+    text-align: left;
+}
+
+.error-page__btn a {
+    padding: 1rem 4.8rem;
+}
+{% endstyle %} {% endcomment %}
