@@ -8,8 +8,9 @@
     "166118462697cfbbad": {
       "type": "newsletter",
       "settings": {
-        "form_label": "",
-        "btn_text": ""
+        "form_label": "Angel",
+        "btn_text": "Click here",
+        "bg_image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg"
       }
     }
   },
