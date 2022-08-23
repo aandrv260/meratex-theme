@@ -17,7 +17,7 @@
             <!-- ImageCol -->
             <div class="info__img-col <?php echo $imgSide; ?>">
                 <div class="info__img-box">
-                    <img class="info__img" src="" alt="" />
+                    <img class="info__img" src="{{ section.settings.image | image_url: master }}" alt="" />
                 </div>
             </div>
         <?php } ?>
