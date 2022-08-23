@@ -3,16 +3,24 @@
     "main": {
       "type": "product-content",
       "settings": {
+        "show_vendor": false
       }
     },
     "recommendations": {
       "type": "recommended-products",
+      "settings": {
+        "products_num": "1"
+      }
+    },
+    "1661258274a4a25dcc": {
+      "type": "info",
       "settings": {
       }
     }
   },
   "order": [
     "main",
-    "recommendations"
+    "recommendations",
+    "1661258274a4a25dcc"
   ]
 }
