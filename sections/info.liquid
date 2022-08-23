@@ -1,3 +1,31 @@
+<section class="section--info">
+  <div class="info grid grid--2-cols">
+            <!-- TextCol -->
+            <div class="info__text-box">
+                <div class="project-number-box project-number-box--info">
+                    <span class="project-number-box__num">
+                      1
+                    </span>
+                    <span class="project-number-box__desc">Sample text</span>
+                </div>
+
+              <h2 class="info__heading">Info heading 1 for testing</h2>
+              <p class="info__text">Минимализъм, открояващ се с модерни детайли, естествени материали придаващи на пространството щедра атмосфера. Акцентирали сме върху различни нюанси на синия цвят, които пасват с цялостния интериорен дизайн. Апартаментът се състои от кухня с дневна и трапезация, спалня и антре с обща площ 90,5 м2.</p>
+            </div>
+
+            <!-- ImageCol -->
+            <div class="info__img-col <?php echo $imgSide; ?>">
+                <div class="info__img-box">
+                    <img class="info__img" src="<?php echo $img1['url']; ?>" alt="<?php echo $img1['url']; ?>" />
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </div>
+</section>
+
+
 {% schema %}
   {
     "name": "Section name",
