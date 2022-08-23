@@ -4,9 +4,17 @@
       "type": "main-page",
       "settings": {
       }
+    },
+    "1661263300dec9afe0": {
+      "type": "newsletter",
+      "settings": {
+        "form_label": "",
+        "btn_text": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1661263300dec9afe0"
   ]
 }
