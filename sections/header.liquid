@@ -8,11 +8,11 @@
 
     <!-- Logo -->
     {% if section.settings.logo %}
-      <h1 class="heading-logo">
+      <h2 class="heading-logo">
         <a href="/"><img class="header__logo" src="{{ section.settings.logo  | img_url: '2048x' }}" alt="..." class="logo"></a>
       </h1>
     {% else %}
-      <h1 class="heading__primary"><a href="/"> {{ shop.name }}</a></h1>
+      <h2 class="heading__secondary"><a href="/"> {{ shop.name }}</a></h1>
     {% endif %}
 
     <!-- Main Menu -->
