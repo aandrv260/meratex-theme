@@ -108,21 +108,21 @@
             "type": "feature",
             "settings": {
               "icon": "delivery",
-              "feature_text": "Бърза доставка на всички продукти"
+              "feature_text": "Fast shipping"
             }
           },
           "0443e2be-d39d-459b-8a84-ddfd6d440c43": {
             "type": "feature",
             "settings": {
               "icon": "warranty",
-              "feature_text": "Гаранция за качество"
+              "feature_text": "Quality guarantee"
             }
           },
           "08b22399-daa3-4987-a871-79bc41917966": {
             "type": "feature",
             "settings": {
               "icon": "donation",
-              "feature_text": "Даряваме матраци от всяка десета поръчка"
+              "feature_text": "We donate money to organizations for every 100th orders"
             }
           },
           "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967": {
