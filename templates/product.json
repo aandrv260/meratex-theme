@@ -11,18 +11,10 @@
       "settings": {
         "products_num": "1"
       }
-    },
-    "1661258274a4a25dcc": {
-      "type": "info",
-      "settings": {
-        "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-        "heading": "Матраци от първо качество"
-      }
     }
   },
   "order": [
     "main",
-    "recommendations",
-    "1661258274a4a25dcc"
+    "recommendations"
   ]
 }
