@@ -43,9 +43,9 @@
             "type": "image",
             "settings": {
               "slide": "shopify:\/\/shop_images\/workout-fitness-center.jpg",
-              "subheading": "Разпродажба",
-              "heading": "Вземи безплатно подматрачна рамка с покупка на матрак",
-              "description": "Спестете пари за качествени матраци. Подобрете съня си, подобрете живота си!",
+              "subheading": "",
+              "heading": "Let us help you achieve your goals",
+              "description": "",
               "button_text": "Пазарувайте сега",
               "button_link": "shopify:\/\/collections\/пакети-на-промоция"
             }
