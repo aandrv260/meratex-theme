@@ -1,1 +1,345 @@
-{"current":{"base_font":"assistant_n4","contact_phone":"+359 877 08 26 14","contact_email":"info@meratex.bg","sections":{"header":{"type":"header","settings":{"logo":"shopify:\/\/shop_images\/logo3.png","main_menu":"main-menu"}},"promo":{"type":"promo","settings":{"enable_promo_bar":true,"promo_text_1":"Безплатна доставка за поръчки над 500лв.","text_link_1":"\/","promo_text_2":"Огромни отстъпки за поръчки над 500лв.","text_link_2":"\/","contact_type":"email"}},"1643300102f9c5e0bf":{"type":"hero","blocks":{"8c13bf8a-3edf-45b5-9c7b-1c1378c8904d":{"type":"image","settings":{"slide":"shopify:\/\/shop_images\/photo-of-a-bed-with-a-white-bed-frame-and-blue-sheets.jpg","subheading":"Разпродажба","heading":"До 30% отстъпка на Комбо Оферти","description":"Спестете пари за качествени матраци. Подобрете съня си, подобрете живота си!","button_text":"Пазарувайте сега","button_link":"shopify:\/\/collections\/пакети-на-промоция"}},"694e43ae-1ca6-4e1d-9395-7de97a1cc0fb":{"type":"image","settings":{"slide":"shopify:\/\/shop_images\/white-pillows-and-sheets-of-a-bed-unmade.jpg","subheading":"Разпродажба","heading":"Вземи безплатно подматрачна рамка с покупка на матрак","description":"Спестете пари за качествени матраци. Подобрете съня си, подобрете живота си!","button_text":"Пазарувайте сега","button_link":"shopify:\/\/collections\/пакети-на-промоция"}}},"block_order":["8c13bf8a-3edf-45b5-9c7b-1c1378c8904d","694e43ae-1ca6-4e1d-9395-7de97a1cc0fb"],"settings":{"auto_slideshow":true,"slide_timer":"10"}},"footer":{"type":"footer","blocks":{"0377fc6e-dfa9-4023-afba-8745b3f2dbca":{"type":"menu","settings":{"footer_menu":"footer"}},"b1935cc1-3d06-4d4a-881b-a54d6e9fe639":{"type":"menu","settings":{"footer_menu":"collection-page"}},"d7ecc8c5-3785-46b3-9cfa-542058ad70c9":{"type":"social_icons","settings":{"heading":"Посетете ни","facebook_link":"meratex","instagram_link":"meratex","youtube_link":"meratex"}},"34f1a18d-9a2b-413d-b38e-bb297862d929":{"type":"contacts","settings":{"contacts_heading":"Контакт с нас","contacts_desc":"Мератекс ЕООД<br><br>\n+359 877 08 26 14<br><br>\nsupport@meratex.bg"}}},"block_order":["0377fc6e-dfa9-4023-afba-8745b3f2dbca","b1935cc1-3d06-4d4a-881b-a54d6e9fe639","d7ecc8c5-3785-46b3-9cfa-542058ad70c9","34f1a18d-9a2b-413d-b38e-bb297862d929"],"settings":{}},"16435271958873f6f1":{"type":"features","blocks":{"4af0f00e-e6f6-4a72-be03-6e20074c2749":{"type":"feature","settings":{"icon":"delivery","feature_text":"Бърза доставка на всички продукти"}},"0443e2be-d39d-459b-8a84-ddfd6d440c43":{"type":"feature","settings":{"icon":"warranty","feature_text":"Гаранция за качество"}},"08b22399-daa3-4987-a871-79bc41917966":{"type":"feature","settings":{"icon":"donation","feature_text":"Даряваме матраци от всяка десета поръчка"}},"6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967":{"type":"feature","settings":{"icon":"reviews","feature_text":"Нашите клинти са изключително доволни от нас"}}},"block_order":["4af0f00e-e6f6-4a72-be03-6e20074c2749","0443e2be-d39d-459b-8a84-ddfd6d440c43","08b22399-daa3-4987-a871-79bc41917966","6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967"],"settings":{"headline":"Ползи от покупка на наши матраци"}},"1643544078e3576d10":{"type":"featured-products","blocks":{"a11a66c3-6d9e-4ea4-8e88-5e4e8c25b970":{"type":"product_card","settings":{"product":"meratex-diamond","top_label":"ТОП","image_label":"Високо качество","benefit_1":"3 пласта премиум пяна","benefit_2":"Охлаждаща пяна на горния слой за една комфортна нощ","benefit_3":"Облекчаване на напрежението при сън за всеки спящ човек.","button_text":"Пазарувай сега"}},"529e1651-92f9-4f34-a425-977ac7a54b41":{"type":"product_card","settings":{"product":"матрак-модел-cool-flex","top_label":"Cool Flex","image_label":"Flex","benefit_1":"3 пласта премиум пяна","benefit_2":"Охлаждаща пяна на горния слой за една комфортна нощ","benefit_3":"Облекчаване на напрежението при сън за всеки спящ човек.","button_text":"Пазарувай сега"}},"705d17ec-33d8-435e-af81-08fc39c1cb73":{"type":"product_card","settings":{"product":"матрак-модел-cool-flex-plus","top_label":"Cool Flex Plus","image_label":"Flex","benefit_1":"3 пласта премиум пяна","benefit_2":"Охлаждаща пяна на горния слой за една комфортна нощ","benefit_3":"Облекчаване на напрежението при сън за всеки спящ човек.","button_text":"Пазарувай сега"}}},"block_order":["a11a66c3-6d9e-4ea4-8e88-5e4e8c25b970","529e1651-92f9-4f34-a425-977ac7a54b41","705d17ec-33d8-435e-af81-08fc39c1cb73"],"settings":{"headline":"Ето някои от нашите най-добри продукти","additional_msg":"Всички цени са с включено ДДС."}},"164361845753ad9236":{"type":"slider-text","blocks":{"73e28254-1fa9-4e4d-9c50-23599090b7ef":{"type":"slide","settings":{"slide_heading":"Матраци от първо качество","slide_text":"Нашите основни неща за сън са създадени за вас и са създадени да издържат. Ние доставяме най-висококачествените материали, които можем да намерим. С безупречно внимание към детайла и подкрепени от десетилетие опит в индустрията, ние изработваме перфектния матрак, който да отговаря на всеки спящ."}},"91b41b1c-9097-4f24-8d28-ab0549ca8943":{"type":"slide","settings":{"slide_heading":"Матраци и сън","slide_text":"Как да намерите подходящия матрак за това как спите? Прочетете за повече информация относно намирането на вашия идеален матрак"}}},"block_order":["73e28254-1fa9-4e4d-9c50-23599090b7ef","91b41b1c-9097-4f24-8d28-ab0549ca8943"],"settings":{"headline":"Съвети, трикове и инструкции","slide_timer":"10"}},"16436229278d413ce9":{"type":"featured-collection","settings":{"headline":"Спести до 30%","collection":"пакети-на-промоция","enable_view_btn":false}},"16436369671084469f":{"type":"benefits","blocks":{"030a06e4-1862-4964-8dc5-9c5be5cbe9b1":{"type":"benefit","settings":{"benefit_img":"shopify:\/\/shop_images\/white-pillows-and-sheets-of-a-bed-unmade.jpg","benefit_heading":"Матраци от най-високо качество","benefit_desc":"Нашите матраци са проектирани с безупречни детайли, за да ви осигурят комфорта и подкрепата, от която се нуждаете за добър нощен сън. Нашите задълбочени изследвания и 10+ години практически познания в индустрията ни позволяват да изработим перфектния матрак за всеки тип спане и цена."}},"6fdc3e17-9b3c-4d9b-9040-d3ba648d1cb6":{"type":"benefit","settings":{"benefit_img":"shopify:\/\/shop_images\/white-pillows-and-sheets-of-a-bed-unmade.jpg","benefit_heading":"Гаранция за комфорт","benefit_desc":"Ако матракът ви е твърде твърд – няма проблем. Ще го коригираме. Твърде мека? Схванахме го. Ние ще извършим нашата изключителна услуга за регулиране на комфорт, дори ако няма технически проблеми с вашия матрак. Всичко, което има значение, е вашият комфорт и как се чувствате за вас. И ние ще продължим да го коригираме за целия живот на матрака."}},"f883a76d-8cb4-44b8-86c1-b19f98d8fc0e":{"type":"benefit","settings":{"benefit_img":"shopify:\/\/shop_images\/white-pillows-and-sheets-of-a-bed-unmade.jpg","benefit_heading":"Право на връщане","benefit_desc":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"}}},"block_order":["030a06e4-1862-4964-8dc5-9c5be5cbe9b1","6fdc3e17-9b3c-4d9b-9040-d3ba648d1cb6","f883a76d-8cb4-44b8-86c1-b19f98d8fc0e"],"settings":{"headline":""}},"16437239388ea57380":{"type":"newsletter","settings":{"form_label":"Регистрирайте се за специална оферта","btn_text":"Абонирай се","bg_image":"shopify:\/\/shop_images\/photo-of-a-bed-with-a-white-bed-frame-and-blue-sheets.jpg"}},"product-content":{"type":"product-content","settings":{"show_vendor":false}},"features":{"type":"features","blocks":{"a5ec874d-2704-4ab0-8453-1939f0484b26":{"type":"feature","settings":{"icon":"delivery","feature_text":"Delivery"}},"57f432fc-b88f-4d92-a8d6-b8fafd596f36":{"type":"feature","settings":{"icon":"reviews","feature_text":"Reviews"}},"cd4fa65b-fdbc-4132-8d7b-eeec38fe462a":{"type":"feature","settings":{"icon":"warranty","feature_text":"Warranty"}},"1456c69a-c143-4b8d-bc5e-5587aab0c1ca":{"type":"feature","settings":{"icon":"donation","feature_text":"Donation"}}},"block_order":["a5ec874d-2704-4ab0-8453-1939f0484b26","57f432fc-b88f-4d92-a8d6-b8fafd596f36","cd4fa65b-fdbc-4132-8d7b-eeec38fe462a","1456c69a-c143-4b8d-bc5e-5587aab0c1ca"],"settings":{"headline":""}},"recommended-products":{"type":"recommended-products","settings":{"products_num":"3"}},"collection-page":{"type":"collection-page","settings":{"product_num":"10"}}},"content_for_index":["1643300102f9c5e0bf","1643544078e3576d10","16435271958873f6f1","164361845753ad9236","16436229278d413ce9","16436369671084469f","16437239388ea57380"]},"presets":{"Default":{}}}
+{
+  "current": {
+    "base_font": "assistant_n4",
+    "contact_phone": "+359 878 79 4994",
+    "contact_email": "primers-ltd@outlook.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_menu": "main-menu",
+          "slider_text_1": "",
+          "slider_link_1": "",
+          "slider_text_2": "",
+          "slider_link_2": ""
+        }
+      },
+      "promo": {
+        "type": "promo",
+        "settings": {
+          "enable_promo_bar": true,
+          "promo_text_1": "Безплатна доставка за поръчки над 500лв.",
+          "text_link_1": "\/",
+          "promo_text_2": "Огромни отстъпки за поръчки над 500лв.",
+          "text_link_2": "\/",
+          "contact_type": "email"
+        }
+      },
+      "1643300102f9c5e0bf": {
+        "type": "hero",
+        "blocks": {
+          "8c13bf8a-3edf-45b5-9c7b-1c1378c8904d": {
+            "type": "image",
+            "settings": {
+              "subheading": "Разпродажба",
+              "heading": "До 30% отстъпка на Комбо Оферти",
+              "description": "Спестете пари за качествени матраци. Подобрете съня си, подобрете живота си!",
+              "button_text": "Пазарувайте сега",
+              "button_link": "shopify:\/\/collections\/пакети-на-промоция"
+            }
+          },
+          "694e43ae-1ca6-4e1d-9395-7de97a1cc0fb": {
+            "type": "image",
+            "settings": {
+              "subheading": "Разпродажба",
+              "heading": "Вземи безплатно подматрачна рамка с покупка на матрак",
+              "description": "Спестете пари за качествени матраци. Подобрете съня си, подобрете живота си!",
+              "button_text": "Пазарувайте сега",
+              "button_link": "shopify:\/\/collections\/пакети-на-промоция"
+            }
+          }
+        },
+        "block_order": [
+          "8c13bf8a-3edf-45b5-9c7b-1c1378c8904d",
+          "694e43ae-1ca6-4e1d-9395-7de97a1cc0fb"
+        ],
+        "settings": {
+          "auto_slideshow": true,
+          "slide_timer": "10"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "0377fc6e-dfa9-4023-afba-8745b3f2dbca": {
+            "type": "menu",
+            "settings": {
+              "footer_menu": "footer"
+            }
+          },
+          "b1935cc1-3d06-4d4a-881b-a54d6e9fe639": {
+            "type": "menu",
+            "settings": {
+              "footer_menu": ""
+            }
+          },
+          "d7ecc8c5-3785-46b3-9cfa-542058ad70c9": {
+            "type": "social_icons",
+            "settings": {
+              "heading": "Посетете ни",
+              "facebook_link": "meratex",
+              "instagram_link": "meratex",
+              "youtube_link": "meratex"
+            }
+          },
+          "34f1a18d-9a2b-413d-b38e-bb297862d929": {
+            "type": "contacts",
+            "settings": {
+              "contacts_heading": "Контакт с нас",
+              "contacts_desc": "Мератекс ЕООД<br><br>\n+359 877 08 26 14<br><br>\nsupport@meratex.bg"
+            }
+          }
+        },
+        "block_order": [
+          "0377fc6e-dfa9-4023-afba-8745b3f2dbca",
+          "b1935cc1-3d06-4d4a-881b-a54d6e9fe639",
+          "d7ecc8c5-3785-46b3-9cfa-542058ad70c9",
+          "34f1a18d-9a2b-413d-b38e-bb297862d929"
+        ],
+        "settings": {
+        }
+      },
+      "16435271958873f6f1": {
+        "type": "features",
+        "blocks": {
+          "4af0f00e-e6f6-4a72-be03-6e20074c2749": {
+            "type": "feature",
+            "settings": {
+              "icon": "delivery",
+              "feature_text": "Бърза доставка на всички продукти"
+            }
+          },
+          "0443e2be-d39d-459b-8a84-ddfd6d440c43": {
+            "type": "feature",
+            "settings": {
+              "icon": "warranty",
+              "feature_text": "Гаранция за качество"
+            }
+          },
+          "08b22399-daa3-4987-a871-79bc41917966": {
+            "type": "feature",
+            "settings": {
+              "icon": "donation",
+              "feature_text": "Даряваме матраци от всяка десета поръчка"
+            }
+          },
+          "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967": {
+            "type": "feature",
+            "settings": {
+              "icon": "reviews",
+              "feature_text": "Нашите клинти са изключително доволни от нас"
+            }
+          }
+        },
+        "block_order": [
+          "4af0f00e-e6f6-4a72-be03-6e20074c2749",
+          "0443e2be-d39d-459b-8a84-ddfd6d440c43",
+          "08b22399-daa3-4987-a871-79bc41917966",
+          "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967"
+        ],
+        "settings": {
+          "headline": "Ползи от покупка на наши матраци"
+        }
+      },
+      "1643544078e3576d10": {
+        "type": "featured-products",
+        "blocks": {
+          "a11a66c3-6d9e-4ea4-8e88-5e4e8c25b970": {
+            "type": "product_card",
+            "settings": {
+              "product": "meratex-diamond",
+              "top_label": "ТОП",
+              "image_label": "Високо качество",
+              "benefit_1": "3 пласта премиум пяна",
+              "benefit_2": "Охлаждаща пяна на горния слой за една комфортна нощ",
+              "benefit_3": "Облекчаване на напрежението при сън за всеки спящ човек.",
+              "button_text": "Пазарувай сега"
+            }
+          },
+          "529e1651-92f9-4f34-a425-977ac7a54b41": {
+            "type": "product_card",
+            "settings": {
+              "product": "матрак-модел-cool-flex",
+              "top_label": "Cool Flex",
+              "image_label": "Flex",
+              "benefit_1": "3 пласта премиум пяна",
+              "benefit_2": "Охлаждаща пяна на горния слой за една комфортна нощ",
+              "benefit_3": "Облекчаване на напрежението при сън за всеки спящ човек.",
+              "button_text": "Пазарувай сега"
+            }
+          },
+          "705d17ec-33d8-435e-af81-08fc39c1cb73": {
+            "type": "product_card",
+            "settings": {
+              "product": "матрак-модел-cool-flex-plus",
+              "top_label": "Cool Flex Plus",
+              "image_label": "Flex",
+              "benefit_1": "3 пласта премиум пяна",
+              "benefit_2": "Охлаждаща пяна на горния слой за една комфортна нощ",
+              "benefit_3": "Облекчаване на напрежението при сън за всеки спящ човек.",
+              "button_text": "Пазарувай сега"
+            }
+          }
+        },
+        "block_order": [
+          "a11a66c3-6d9e-4ea4-8e88-5e4e8c25b970",
+          "529e1651-92f9-4f34-a425-977ac7a54b41",
+          "705d17ec-33d8-435e-af81-08fc39c1cb73"
+        ],
+        "settings": {
+          "headline": "Ето някои от нашите най-добри продукти",
+          "additional_msg": "Всички цени са с включено ДДС."
+        }
+      },
+      "164361845753ad9236": {
+        "type": "slider-text",
+        "blocks": {
+          "73e28254-1fa9-4e4d-9c50-23599090b7ef": {
+            "type": "slide",
+            "settings": {
+              "slide_heading": "Матраци от първо качество",
+              "slide_text": "Нашите основни неща за сън са създадени за вас и са създадени да издържат. Ние доставяме най-висококачествените материали, които можем да намерим. С безупречно внимание към детайла и подкрепени от десетилетие опит в индустрията, ние изработваме перфектния матрак, който да отговаря на всеки спящ."
+            }
+          },
+          "91b41b1c-9097-4f24-8d28-ab0549ca8943": {
+            "type": "slide",
+            "settings": {
+              "slide_heading": "Матраци и сън",
+              "slide_text": "Как да намерите подходящия матрак за това как спите? Прочетете за повече информация относно намирането на вашия идеален матрак"
+            }
+          }
+        },
+        "block_order": [
+          "73e28254-1fa9-4e4d-9c50-23599090b7ef",
+          "91b41b1c-9097-4f24-8d28-ab0549ca8943"
+        ],
+        "settings": {
+          "headline": "Съвети, трикове и инструкции",
+          "slide_timer": "10"
+        }
+      },
+      "16436229278d413ce9": {
+        "type": "featured-collection",
+        "settings": {
+          "headline": "Спести до 30%",
+          "collection": "пакети-на-промоция",
+          "enable_view_btn": false
+        }
+      },
+      "16436369671084469f": {
+        "type": "benefits",
+        "blocks": {
+          "030a06e4-1862-4964-8dc5-9c5be5cbe9b1": {
+            "type": "benefit",
+            "settings": {
+              "benefit_heading": "Матраци от най-високо качество",
+              "benefit_desc": "Нашите матраци са проектирани с безупречни детайли, за да ви осигурят комфорта и подкрепата, от която се нуждаете за добър нощен сън. Нашите задълбочени изследвания и 10+ години практически познания в индустрията ни позволяват да изработим перфектния матрак за всеки тип спане и цена."
+            }
+          },
+          "6fdc3e17-9b3c-4d9b-9040-d3ba648d1cb6": {
+            "type": "benefit",
+            "settings": {
+              "benefit_heading": "Гаранция за комфорт",
+              "benefit_desc": "Ако матракът ви е твърде твърд – няма проблем. Ще го коригираме. Твърде мека? Схванахме го. Ние ще извършим нашата изключителна услуга за регулиране на комфорт, дори ако няма технически проблеми с вашия матрак. Всичко, което има значение, е вашият комфорт и как се чувствате за вас. И ние ще продължим да го коригираме за целия живот на матрака."
+            }
+          },
+          "f883a76d-8cb4-44b8-86c1-b19f98d8fc0e": {
+            "type": "benefit",
+            "settings": {
+              "benefit_heading": "Право на връщане",
+              "benefit_desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"
+            }
+          }
+        },
+        "block_order": [
+          "030a06e4-1862-4964-8dc5-9c5be5cbe9b1",
+          "6fdc3e17-9b3c-4d9b-9040-d3ba648d1cb6",
+          "f883a76d-8cb4-44b8-86c1-b19f98d8fc0e"
+        ],
+        "settings": {
+          "headline": ""
+        }
+      },
+      "16437239388ea57380": {
+        "type": "newsletter",
+        "settings": {
+          "form_label": "Регистрирайте се за специална оферта",
+          "btn_text": "Абонирай се"
+        }
+      },
+      "product-content": {
+        "type": "product-content",
+        "settings": {
+          "show_vendor": false
+        }
+      },
+      "features": {
+        "type": "features",
+        "blocks": {
+          "a5ec874d-2704-4ab0-8453-1939f0484b26": {
+            "type": "feature",
+            "settings": {
+              "icon": "delivery",
+              "feature_text": "Delivery"
+            }
+          },
+          "57f432fc-b88f-4d92-a8d6-b8fafd596f36": {
+            "type": "feature",
+            "settings": {
+              "icon": "reviews",
+              "feature_text": "Reviews"
+            }
+          },
+          "cd4fa65b-fdbc-4132-8d7b-eeec38fe462a": {
+            "type": "feature",
+            "settings": {
+              "icon": "warranty",
+              "feature_text": "Warranty"
+            }
+          },
+          "1456c69a-c143-4b8d-bc5e-5587aab0c1ca": {
+            "type": "feature",
+            "settings": {
+              "icon": "donation",
+              "feature_text": "Donation"
+            }
+          }
+        },
+        "block_order": [
+          "a5ec874d-2704-4ab0-8453-1939f0484b26",
+          "57f432fc-b88f-4d92-a8d6-b8fafd596f36",
+          "cd4fa65b-fdbc-4132-8d7b-eeec38fe462a",
+          "1456c69a-c143-4b8d-bc5e-5587aab0c1ca"
+        ],
+        "settings": {
+          "headline": ""
+        }
+      },
+      "recommended-products": {
+        "type": "recommended-products",
+        "settings": {
+          "products_num": "3"
+        }
+      },
+      "collection-page": {
+        "type": "collection-page",
+        "settings": {
+          "product_num": "10"
+        }
+      }
+    },
+    "content_for_index": [
+      "1643300102f9c5e0bf",
+      "1643544078e3576d10",
+      "16435271958873f6f1",
+      "164361845753ad9236",
+      "16436229278d413ce9",
+      "16436369671084469f",
+      "16437239388ea57380"
+    ]
+  },
+  "presets": {
+    "Default": {
+    }
+  }
+}
