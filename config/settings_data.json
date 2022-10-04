@@ -122,7 +122,7 @@
             "type": "feature",
             "settings": {
               "icon": "donation",
-              "feature_text": "We donate money to organizations for every 100th orders"
+              "feature_text": "We donate money to organizations for each 100th order"
             }
           },
           "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967": {
