@@ -10,24 +10,24 @@
   	{{ form.errors | default_errors }}
   	<div class="contact-form__row-groups">
   		<div class="contact-form__input-group">
-  			<label class="contact-form__label" for="ContactFormName">Име</label>
+  			<label class="contact-form__label" for="ContactFormName">Name</label>
   			<input class="contact-form__input" type="text" id="ContactFormName" name="contact[name]">
   		</div>
   
   		<div class="contact-form__input-group">
-  			<label class="contact-form__label" for="ContactFormEmail">Имейл</label>
+  			<label class="contact-form__label" for="ContactFormEmail">Email</label>
   			<input class="contact-form__input" type="email" id="ContactFormEmail" name="contact[email]">
   		</div>
   	</div>
   	
   	<div class="contact-form__input-group">
-  		<label class="contact-form__label" for="ContactFormPhone">Телефон</label>
+  		<label class="contact-form__label" for="ContactFormPhone">Phone</label>
   		<input class="contact-form__input" type="tel" id="ContactFormPhone" name="contact[phone]">
   </div>
-  	<label class="contact-form__label" for="ContactFormMessage">Съобщение</label>
+  	<label class="contact-form__label" for="ContactFormMessage">Message</label>
   	<textarea class="contact-form__msg" rows="10" id="ContactFormMessage" name="contact[body]"></textarea>
 <!--   	<input class="contact-form__submit-btn btn btn--outline" type="submit" value="send"> -->
-  <button type="submit" class="contact-form__submit-btn btn btn--full">Изпрати</button>
+  <button type="submit" class="contact-form__submit-btn btn btn--full">Send</button>
 	{% endform %}
 </div>
 
