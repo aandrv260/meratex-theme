@@ -191,8 +191,8 @@
           "73e28254-1fa9-4e4d-9c50-23599090b7ef": {
             "type": "slide",
             "settings": {
-              "slide_heading": "Матраци от първо качество",
-              "slide_text": "Нашите основни неща за сън са създадени за вас и са създадени да издържат. Ние доставяме най-висококачествените материали, които можем да намерим. С безупречно внимание към детайла и подкрепени от десетилетие опит в индустрията, ние изработваме перфектния матрак, който да отговаря на всеки спящ."
+              "slide_heading": "Washing and drying your clothes",
+              "slide_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum!"
             }
           },
           "91b41b1c-9097-4f24-8d28-ab0549ca8943": {
@@ -208,7 +208,7 @@
           "91b41b1c-9097-4f24-8d28-ab0549ca8943"
         ],
         "settings": {
-          "headline": "Съвети, трикове и инструкции",
+          "headline": "Tips, tricks and instructions",
           "slide_timer": "10"
         }
       },
