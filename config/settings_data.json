@@ -150,12 +150,12 @@
             "type": "product_card",
             "settings": {
               "product": "gothic-t-shirt",
-              "top_label": "ТОП",
-              "image_label": "Високо качество",
-              "benefit_1": "3 пласта премиум пяна",
-              "benefit_2": "Охлаждаща пяна на горния слой за една комфортна нощ",
-              "benefit_3": "Облекчаване на напрежението при сън за всеки спящ човек.",
-              "button_text": "Пазарувай сега"
+              "top_label": "TOP",
+              "image_label": "High Quality",
+              "benefit_1": "High quality polyester",
+              "benefit_2": "O-Neck collar",
+              "benefit_3": "Multiple sizes",
+              "button_text": "Shop now"
             }
           },
           "529e1651-92f9-4f34-a425-977ac7a54b41": {
