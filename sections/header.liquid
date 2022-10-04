@@ -19,7 +19,7 @@
     <nav class="header__nav">
         <ul class="header__list">
             {% for link in linklists[section.settings.main_menu].links %}
-              {% assign is_link_active = link.active %}
+              {% assign is_link_active = link.child_active %}
             <li class="header__list-item">
                 <a class="header__link{% if is_link_active %}header__link--active{% endif %}" href="{{ link.url }}">{{ link.title }} {% if link.levels > 0 %} <span style="margin-left: 1px;">	<span class="sub-menu-arr">	&#11167;</span> {% endif %}</a>
 
