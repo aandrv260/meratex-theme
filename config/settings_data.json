@@ -249,8 +249,8 @@
       "16437239388ea57380": {
         "type": "newsletter",
         "settings": {
-          "form_label": "Регистрирайте се за специална оферта",
-          "btn_text": "Абонирай се",
+          "form_label": "Subscribe to our newsletter for special discounts",
+          "btn_text": "Subscribe",
           "bg_image": "shopify:\/\/shop_images\/Working-Out-With-Chalk.jpg"
         }
       },
