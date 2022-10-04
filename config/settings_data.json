@@ -150,7 +150,7 @@
             "type": "product_card",
             "settings": {
               "product": "gothic-t-shirt",
-              "top_label": "TOP",
+              "top_label": "Gothic",
               "image_label": "High Quality",
               "benefit_1": "High quality polyester",
               "benefit_2": "O-Neck collar",
@@ -164,9 +164,9 @@
               "product": "gym-tight-t-shirt",
               "top_label": "Cool Flex",
               "image_label": "Flex",
-              "benefit_1": "3 пласта премиум пяна",
-              "benefit_2": "Охлаждаща пяна на горния слой за една комфортна нощ",
-              "benefit_3": "Облекчаване на напрежението при сън за всеки спящ човек.",
+              "benefit_1": "Great for extensive workouts",
+              "benefit_2": "Quality polyester",
+              "benefit_3": "Great solid color",
               "button_text": "Пазарувай сега"
             }
           },
