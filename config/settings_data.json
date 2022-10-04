@@ -250,7 +250,8 @@
         "type": "newsletter",
         "settings": {
           "form_label": "Регистрирайте се за специална оферта",
-          "btn_text": "Абонирай се"
+          "btn_text": "Абонирай се",
+          "bg_image": "shopify:\/\/shop_images\/Working-Out-With-Chalk.jpg"
         }
       },
       "product-content": {
