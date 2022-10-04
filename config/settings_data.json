@@ -118,25 +118,17 @@
               "feature_text": "Quality guarantee"
             }
           },
-          "08b22399-daa3-4987-a871-79bc41917966": {
-            "type": "feature",
-            "settings": {
-              "icon": "donation",
-              "feature_text": "We donate money to organizations for each 100th order"
-            }
-          },
           "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967": {
             "type": "feature",
             "settings": {
               "icon": "reviews",
-              "feature_text": "Нашите клинти са изключително доволни от нас"
+              "feature_text": "Our customers are extremely satisfied of our products"
             }
           }
         },
         "block_order": [
           "4af0f00e-e6f6-4a72-be03-6e20074c2749",
           "0443e2be-d39d-459b-8a84-ddfd6d440c43",
-          "08b22399-daa3-4987-a871-79bc41917966",
           "6aa1c9f2-bbc1-4c2f-adca-d23fd2ff9967"
         ],
         "settings": {
