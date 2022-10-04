@@ -44,7 +44,7 @@
 			<span class="collection-cards__price">{{ product.price | money }}</span>
 			{% endif %}
 		
-		<a href={{ product.url }} class="collection-cards__cta-link">Shop now</a>
+		<a href={{ product.url }} class="collection-cards__cta-link">{{ button_text }}</a>
       </div>
     </div>
     </a>
@@ -202,7 +202,14 @@
           		"label": "25"
         		}
       		]
-    	}
+    	},
+
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "default": "Shop now"
+      }
 	]
   }
 {% endschema %}
