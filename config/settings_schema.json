@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Themekit template theme",
+    "theme_name": "Primex",
     "theme_version": "1.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://github.com/Shopify/themekit",
-    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+    "theme_author": "Angel Andreev",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/themekit",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/themekit\/issues"
   },
   {
     "name": "Basic Information",
@@ -16,7 +16,6 @@
         "label": "Base Font",
         "default": "helvetica_n4"
       },
-
       {
         "type": "link_list",
         "id": "mob_nav_menu",
@@ -42,7 +41,6 @@
       }
     ]
   },
-
   {
     "name": "Cart",
     "settings": [
@@ -55,12 +53,10 @@
             "value": "3",
             "label": "3"
           },
-
           {
             "value": "4",
             "label": "4"
           },
-
           {
             "value": "5",
             "label": "5"
